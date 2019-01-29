@@ -1,2 +1,3 @@
 # Etagair-Configurator-API
 General purpose Configurator API/Library for products, services and more...
+Developed in .NET/C#.
