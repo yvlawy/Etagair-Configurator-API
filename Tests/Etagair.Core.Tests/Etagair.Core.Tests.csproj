@@ -1,0 +1,30 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FakeItEasy" Version="4.9.1" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.8.0" />
+    <PackageReference Include="MSTest.TestAdapter" Version="1.3.2" />
+    <PackageReference Include="MSTest.TestFramework" Version="1.3.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Appli\10-Core\10-Reposit\Etagair.Core.Reposit.Contract\Etagair.Core.Reposit.Contract.csproj" />
+    <ProjectReference Include="..\..\Appli\10-Core\10-Reposit\Impl\Etagair.Core.Reposit.InMemory\Etagair.Core.Reposit.InMemory.csproj" />
+    <ProjectReference Include="..\..\Appli\10-Core\10-Reposit\Impl\Etagair.Core.Reposit.LiteDB\Etagair.Core.Reposit.LiteDB.csproj" />
+    <ProjectReference Include="..\..\Appli\10-Core\Etagair.Core.System\Etagair.Core.System.csproj" />
+    <ProjectReference Include="..\..\Appli\10-Core\Etagair.Core\Etagair.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Data\TextFile1.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>
