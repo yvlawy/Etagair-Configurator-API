@@ -8,7 +8,7 @@ namespace Etagair.Core.System
     /// A language used in the catalog.
     /// A correspondingn LanguageDef (on LanguageCode) must exists.
     /// </summary>
-    public class Language
+    public class Language 
     {
         public string Id { get; set; }
         public MainLanguageCode MainLanguageCode { get; set; }
