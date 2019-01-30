@@ -1,22 +1,24 @@
 # What is Etagair?
 Etagair is General purpose Configurator API for products, services and more ...
-It's developed in .NET/C# and provided as a set of several libraries. 
+
+It's developed in .NET/C# and is provided as a set of several libraries. 
 It's a back-office API, there is no UI.
-Data are saved in a embedded Document database (LiteDB).
+Data are saved in a embedded database.
 
 # Main functionnalities
--Management of complex objects : entity with properties (key-value), organized in folders from a root one.
+-Management of complex objects : entities with properties (list of key-value).
 
--Creation of complex entities by using a templating mechanism.
+-Entities are organized hierarchically in folders.
+
+-Creation of complex entities based on template.
 
 -Localized media, only text for now (by using text code), image will be added (image code). 
  
-  Property key can be a string or a text code.
+-Rich search of entities by properties criteria.
 
--Rich search of entities by properties criteria.  
 
 # Concepts
-Around entity, property, folder objects and entity template.
+Concepts used in Etagair are: entity, key-value property, folder and entity template.
 
 Entity template is used to generate complex entities with properties.
 
