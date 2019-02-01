@@ -25,5 +25,5 @@ Entity template is used to generate complex entities with properties.
 
 # More information
 More information/documentation about the project are located in the project wiki:
+[here](https://github.com/yvlawy/Etagair-Configurator-API/wiki)
 
-https://github.com/yvlawy/Etagair-Configurator-API/wiki
