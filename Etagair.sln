@@ -15,15 +15,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Dev", "Dev", "{E906CFF1-2E4
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "10-Engine", "10-Engine", "{51AD828F-AE6F-4EFB-A249-5993E524B443}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Etagair.Core.Reposit.Contract", "Appli\10-Core\10-Reposit\Etagair.Core.Reposit.Contract\Etagair.Core.Reposit.Contract.csproj", "{9B2C9A51-401D-45ED-8C63-C40DCB6FB894}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Etagair.Core.Reposit.Contract", "Appli\10-Engine\10-Reposit\Etagair.Core.Reposit.Contract\Etagair.Core.Reposit.Contract.csproj", "{9B2C9A51-401D-45ED-8C63-C40DCB6FB894}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Etagair.Core.System", "Appli\10-Core\Etagair.Core.System\Etagair.Core.System.csproj", "{399F4367-7C3C-4C51-B6D0-CECA9068C6B7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Etagair.Core.System", "Appli\10-Engine\Etagair.Core.System\Etagair.Core.System.csproj", "{399F4367-7C3C-4C51-B6D0-CECA9068C6B7}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Etagair.Core", "Appli\10-Core\Etagair.Core\Etagair.Core.csproj", "{CE06A78B-6AED-4529-958A-74B6628063A5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Etagair.Core", "Appli\10-Engine\Etagair.Core\Etagair.Core.csproj", "{CE06A78B-6AED-4529-958A-74B6628063A5}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Etagair.Core.Reposit.LiteDB", "Appli\10-Core\10-Reposit\Impl\Etagair.Core.Reposit.LiteDB\Etagair.Core.Reposit.LiteDB.csproj", "{B633CB39-824B-481F-94C9-1178017EAA90}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Etagair.Core.Reposit.LiteDB", "Appli\10-Engine\10-Reposit\Impl\Etagair.Core.Reposit.LiteDB\Etagair.Core.Reposit.LiteDB.csproj", "{B633CB39-824B-481F-94C9-1178017EAA90}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Etagair.Core.Reposit.InMemory", "Appli\10-Core\10-Reposit\Impl\Etagair.Core.Reposit.InMemory\Etagair.Core.Reposit.InMemory.csproj", "{AB79876E-CA0D-4A22-AAEE-41956BC03C9E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Etagair.Core.Reposit.InMemory", "Appli\10-Engine\10-Reposit\Impl\Etagair.Core.Reposit.InMemory\Etagair.Core.Reposit.InMemory.csproj", "{AB79876E-CA0D-4A22-AAEE-41956BC03C9E}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DevApp", "Dev\DevApp\DevApp.csproj", "{0809B1BA-8820-4186-86FA-28DB0A6498C0}"
 EndProject
