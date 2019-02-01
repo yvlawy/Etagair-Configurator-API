@@ -13,7 +13,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Impl", "Impl", "{B65D7B50-E
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Dev", "Dev", "{E906CFF1-2E4C-47D6-9956-F8403C0AD44F}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "10-Core", "10-Core", "{51AD828F-AE6F-4EFB-A249-5993E524B443}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "10-Engine", "10-Engine", "{51AD828F-AE6F-4EFB-A249-5993E524B443}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Etagair.Core.Reposit.Contract", "Appli\10-Core\10-Reposit\Etagair.Core.Reposit.Contract\Etagair.Core.Reposit.Contract.csproj", "{9B2C9A51-401D-45ED-8C63-C40DCB6FB894}"
 EndProject
@@ -27,7 +27,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Etagair.Core.Reposit.InMemo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DevApp", "Dev\DevApp\DevApp.csproj", "{0809B1BA-8820-4186-86FA-28DB0A6498C0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Etagair.Core.Tests", "Tests\Etagair.Core.Tests\Etagair.Core.Tests.csproj", "{D55D0E37-1F17-4574-AA72-979B5424EBAE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Etagair.Core.Tests", "Tests\Etagair.Core.Tests\Etagair.Core.Tests.csproj", "{D55D0E37-1F17-4574-AA72-979B5424EBAE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
