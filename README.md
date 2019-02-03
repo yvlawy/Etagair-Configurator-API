@@ -23,5 +23,7 @@ For more details, see the [wiki](https://github.com/yvlawy/Etagair-Configurator-
 ## Getting started
 Create a C# application. Create the Etagair engine object.
 
+```csharp
     EtagairEngine engine = new EtagairEngine();
+```
 
