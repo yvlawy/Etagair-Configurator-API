@@ -5,6 +5,8 @@ It's developed in .NET/C# and it is provided as a set of several libraries.
 It's a back-office API, there is no UI.
 Data are saved in a embedded database.
 
+For more details, see the [wiki](https://github.com/yvlawy/Etagair-Configurator-API/wiki)
+
 ## Key features
 -Embedded .NET family assembly, platform independent without references to other libraries.
 
@@ -18,7 +20,8 @@ Data are saved in a embedded database.
  
 -Rich search of entities by properties criteria.
 
-## More information
-More information/documentation about the project are located in the project wiki:
-[here](https://github.com/yvlawy/Etagair-Configurator-API/wiki)
+## Getting started
+Create a C# application. Create the Etagair engine object.
+
+    EtagairEngine engine = new EtagairEngine();
 
