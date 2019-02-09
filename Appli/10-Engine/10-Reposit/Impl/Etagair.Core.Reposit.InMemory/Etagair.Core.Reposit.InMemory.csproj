@@ -6,6 +6,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="NuGet.Build" Version="2.12.0" />
+    <PackageReference Include="NuGet.CommandLine" Version="4.9.2">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\..\..\Etagair.Core.System\Etagair.Core.System.csproj" />
     <ProjectReference Include="..\..\Etagair.Core.Reposit.Contract\Etagair.Core.Reposit.Contract.csproj" />
   </ItemGroup>

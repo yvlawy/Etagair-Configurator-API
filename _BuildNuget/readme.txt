@@ -1,5 +1,8 @@
 Etagair nuget publication readme.txt:
 
+need to install the package: Nuget.CommandLine into the solution. 
+(Nuget.Build?)
+
 ================================================================================
 Publications:
 last is: 0.0.1.0, 09fev19.
