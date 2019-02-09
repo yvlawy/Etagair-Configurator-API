@@ -54,13 +54,14 @@ These lines of code create the engine object. The init method create the databas
 Create a folder named "computers", add under it an entity having two properties.
 An entity haven't a name. Property of an entity is key-value pair. 
 
+The data:
 ```csharp
 F:computers\
   E:   
   "Name"= "Toshiba Satellite Core I7"
   "Trademark"= "Toshiba"
 ```
-
+The Code:
 ```csharp
 // create a folder, under the root
 Folder foldComputers = engine.Editor.CreateFolder(null, "computers");
