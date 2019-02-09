@@ -55,8 +55,11 @@ Create a folder named "computers", add under it an entity having two properties.
 An entity haven't a name. Property of an entity is key-value pair. 
 
 F:computers\
+
   E: 
+  
   "Name"= "Toshiba Satellite Core I7"
+
   "Trademark"= "Toshiba"
 
 ```csharp
