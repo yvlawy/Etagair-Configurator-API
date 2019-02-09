@@ -33,19 +33,19 @@ In the program, you have to include these using:
 These lines of code create the engine object. The init method create the database or use the existing one.
 
 ```csharp
-	EtagairEngine engine = new EtagairEngine();
+  EtagairEngine engine = new EtagairEngine();
 
-	// the path must exists, location where to put the database file
-	string dbPath = @".\Data\";
+  // the path must exists, location where to put the database file
+  string dbPath = @".\Data\";
 
-	// create the database or reuse the existing one
-	if (!engine.Init(dbPath))
-	{
-		Console.WriteLine("Db initialization Failed.");
-		return;
-	}
+  // create the database or reuse the existing one
+  if (!engine.Init(dbPath))
+  {
+    Console.WriteLine("Db initialization Failed.");
+    return;
+  }
 
-	// the database is created or reused and opened, ready to the execution
-	Console.WriteLine("Db initialized with success.");
+  // the database is created or reused and opened, ready to the execution
+  Console.WriteLine("Db initialized with success.");
 ```
 
