@@ -29,6 +29,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DevApp", "Dev\DevApp\DevApp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Etagair.Core.Tests", "Tests\Etagair.Core.Tests\Etagair.Core.Tests.csproj", "{D55D0E37-1F17-4574-AA72-979B5424EBAE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Etagair.Engine", "Appli\10-Engine\Etagair.Engine\Etagair.Engine.csproj", "{8BF6A991-7358-459A-ADA4-690FE274EA34}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -63,6 +65,10 @@ Global
 		{D55D0E37-1F17-4574-AA72-979B5424EBAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D55D0E37-1F17-4574-AA72-979B5424EBAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D55D0E37-1F17-4574-AA72-979B5424EBAE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8BF6A991-7358-459A-ADA4-690FE274EA34}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8BF6A991-7358-459A-ADA4-690FE274EA34}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8BF6A991-7358-459A-ADA4-690FE274EA34}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8BF6A991-7358-459A-ADA4-690FE274EA34}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -78,6 +84,7 @@ Global
 		{AB79876E-CA0D-4A22-AAEE-41956BC03C9E} = {B65D7B50-E284-4E5A-8581-2E03500F9AFC}
 		{0809B1BA-8820-4186-86FA-28DB0A6498C0} = {E906CFF1-2E4C-47D6-9956-F8403C0AD44F}
 		{D55D0E37-1F17-4574-AA72-979B5424EBAE} = {A99DBCC3-9ABD-4463-A448-E50B8EB04750}
+		{8BF6A991-7358-459A-ADA4-690FE274EA34} = {51AD828F-AE6F-4EFB-A249-5993E524B443}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {BE06C0D3-9AB5-4286-A49B-6A438751863E}

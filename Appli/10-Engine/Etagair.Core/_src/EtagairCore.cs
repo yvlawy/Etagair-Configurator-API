@@ -6,19 +6,29 @@ namespace Etagair.Core
 {
     /// <summary>
     /// The Etagair core API.
+    /// Use an agnostic repository (not a concrete one), through an interface.
     /// </summary>
     public class EtagairCore
     {
         IEtagairReposit _reposit;
 
 
-        public EtagairCore(IEtagairReposit reposit)
+        //public EtagairCore(IEtagairReposit reposit)
+        //{
+        //    _reposit = reposit;
+        //    Searcher = new Searcher(reposit);
+        //    Editor = new Editor(reposit, Searcher);
+        //    EditorTempl = new EditorTempl(reposit);
+        //    ProcessTempl = new ProcessTempl(reposit);
+        //}
+
+        public EtagairCore()
         {
-            _reposit = reposit;
-            Searcher = new Searcher(reposit);
-            Editor = new Editor(reposit, Searcher);
-            EditorTempl = new EditorTempl(reposit);
-            ProcessTempl = new ProcessTempl(reposit);
+            _reposit = null;
+            Searcher = null;
+            Editor = null;
+            EditorTempl = null;
+            ProcessTempl = null;
         }
 
         /// <summary>
@@ -47,47 +57,54 @@ namespace Etagair.Core
         /// If it's already created, can't create a new one.
         /// </summary>
         /// <returns></returns>
-        public ICatalog Init()
+        public bool Init(IEtagairReposit reposit)
         {
-            if (!_reposit.IsCreated)
+            try
             {
-                // create the repository (with the structure descriptor)
-                if (!_reposit.Create())
-                    return null;
+                _reposit = reposit;
+                Searcher = new Searcher(reposit);
+                Editor = new Editor(reposit, Searcher);
+                EditorTempl = new EditorTempl(reposit);
+                ProcessTempl = new ProcessTempl(reposit);
 
-                // create system data (initial data)
-                CreateSystemData(_reposit);
+                if (!_reposit.IsCreated)
+                {
+                    return CreateDb();
+                }
 
-                // create and save the default catalog
-                ICatalog catalog= new Catalog();
-                catalog.Name = CoreDef.DefaultCatalogName;
-                _reposit.Builder.SaveCatalog(catalog);
-                return catalog;
+                return OpenDb();
+            }catch
+            {
+                return false;
             }
+        }
 
-            // can't create the catalog, alredy exists
-            return null;
+        #region Privates methods
+
+        private bool CreateDb()
+        {
+            // create the repository (with the structure descriptor)
+            if (!_reposit.Create())
+                return false;
+
+            // create system data (initial data)
+            CreateSystemData(_reposit);
+
+            // create and save the default catalog
+            ICatalog catalog = new Catalog();
+            catalog.Name = CoreDef.DefaultCatalogName;
+            _reposit.Builder.SaveCatalog(catalog);
+            return true;
         }
 
         /// <summary>
         /// Open the existing default catalog in the repository
         /// </summary>
         /// <returns></returns>
-        public ICatalog OpenCatalog()
+        public bool OpenDb()
         {
-            if (!_reposit.Open())
-                return null;
-
-            return _reposit.Finder.GetCatalog();
+            return _reposit.Open();
         }
-
-        //public bool CloseCatalog()
-        //{ }
-
-        //public bool DeleteCatalog()
-        //{ }
-
-        #region Privates methods
 
         private bool CreateSystemData(IEtagairReposit reposit)
         {

@@ -3,6 +3,7 @@ using Etagair.Core.Reposit.Contract;
 using Etagair.Core.Reposit.InMemory;
 using Etagair.Core.Reposit.LiteDB;
 using Etagair.Core.System;
+using Etagair.Engine;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -38,11 +39,11 @@ namespace DevApp
         static EtagairCore CreateCore(IEtagairReposit reposit)
         {
             // create the core configurator, inject the concrete repository
-            EtagairCore core = new EtagairCore(reposit);
+            EtagairCore core = new EtagairCore();
 
 
             //----init the core: create the catalog, becomes the current catalog
-            if (core.Init() == null)
+            if (!core.Init(reposit))
             {
                 Console.WriteLine("Error, Init failed, can't create the catalog, already exists.");
                 return null;
@@ -155,11 +156,10 @@ namespace DevApp
         /// <summary>
         ///  select entities having a property key='Name'
         ///  
-        /// $$$Root\
         ///     computers\
         ///         Ent: Name=Toshiba   Ok, selected
         ///         Ent: Name=Dell      Ok, selected
-        ///         Ent: Nom=HP         NOT selected
+        ///         Ent: Nom=HP         --NOT selected
         ///     
         /// </summary>
         /// <param name="core"></param>
@@ -167,24 +167,23 @@ namespace DevApp
         {
             Console.WriteLine("====>TestSearchEntity: ");
 
-            //---- create a folder, under the root            
+            //---- create a folder, under the root
             Folder foldComputers = core.Editor.CreateFolder(null, "computers");
 
             //==== creates entities, with prop
 
-            //----create entities
+            //----create entity
             Entity toshibaCoreI7 = core.Editor.CreateEntity(foldComputers);
-            // Add a property to an object: key - value, both are textCode (will be displayed translated, depending on the language)
             core.Editor.CreateProperty(toshibaCoreI7, "Name", "Toshiba Satellite Core I7");
             core.Editor.CreateProperty(toshibaCoreI7, "TradeMark", "Toshiba");
 
+            //----create entity
             Entity dellCoreI7 = core.Editor.CreateEntity(foldComputers);
-            // Add a property to an object: key - value, both are textCode (will be displayed translated depending on the language)
             core.Editor.CreateProperty(dellCoreI7, "Name", "Dell Inspiron 15-5570-sku6");
             core.Editor.CreateProperty(dellCoreI7, "TradeMark", "Dell");
 
+            //----create entity
             Entity HPCoreI7 = core.Editor.CreateEntity(foldComputers);
-            // Add a property to an object: key - value, both are textCode (will be displayed translated depending on the language)
             core.Editor.CreateProperty(HPCoreI7, "Nom", "HP Core i7");
             core.Editor.CreateProperty(HPCoreI7, "TradeMark", "HP");
 
@@ -224,7 +223,7 @@ namespace DevApp
         // Add properties childs
         // set rule for childs: One, Several, 0..N,...
 
-        static void Main(string[] args)
+        static void TestCore()
         {
             //IEtagairReposit reposit= CreateRepository_InMemory();
             IEtagairReposit reposit = CreateRepository_LiteDB(true);
@@ -237,6 +236,13 @@ namespace DevApp
             //BuildContent(core);
 
             //TestSearchEntity(core);
+        }
+
+        static void Main(string[] args)
+        {
+            //TestCore();
+            DevEtagairEngine devEtagairEngine = new DevEtagairEngine();
+            devEtagairEngine.Run();
 
             Console.WriteLine("Ends.");
         }

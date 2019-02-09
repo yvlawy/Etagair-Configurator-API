@@ -62,10 +62,10 @@ namespace Etagair.Core.Tests
         public static EtagairCore CreateCore(IEtagairReposit reposit)
         {
             // create the core configurator, inject the concrete repository
-            EtagairCore core = new EtagairCore(reposit);
+            EtagairCore core = new EtagairCore();
 
             //----init the core: create the catalog, becomes the current catalog
-            if (core.Init() == null)
+            if (!core.Init(reposit))
                 return null;
 
             // configure the catalog

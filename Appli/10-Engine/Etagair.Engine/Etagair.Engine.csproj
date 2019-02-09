@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\10-Reposit\Etagair.Core.Reposit.Contract\Etagair.Core.Reposit.Contract.csproj" />
+    <ProjectReference Include="..\10-Reposit\Impl\Etagair.Core.Reposit.InMemory\Etagair.Core.Reposit.InMemory.csproj" />
+    <ProjectReference Include="..\10-Reposit\Impl\Etagair.Core.Reposit.LiteDB\Etagair.Core.Reposit.LiteDB.csproj" />
+    <ProjectReference Include="..\Etagair.Core.System\Etagair.Core.System.csproj" />
+    <ProjectReference Include="..\Etagair.Core\Etagair.Core.csproj" />
+  </ItemGroup>
+
+</Project>
