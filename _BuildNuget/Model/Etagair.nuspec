@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>Etagair</id>
+    <version>0.0.1</version>
+    <title>Etagair</title>
+    <authors>lawy</authors>
+    <owners>lawy</owners>
+    <projectUrl>https://github.com/yvlawy/Etagair-Configurator-API</projectUrl>
+    <iconUrl>https://github.com/yvlawy/Etagair-Configurator-API/blob/master/_BuildNuget/Model/Etagair.png?raw=true</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>General purpose Configurator API/Library for products, services and more...</description>
+    <summary></summary>
+    <releaseNotes>First deployed version of the application</releaseNotes>
+    <tags>csharp dotnet</tags>
+  </metadata>
+</package>
