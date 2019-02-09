@@ -25,6 +25,7 @@ For more details, see the [wiki](https://github.com/yvlawy/Etagair-Configurator-
 ### Using clauses
 Create a C# application. Create the Etagair engine object.
 In the program, you have to include these using:
+
 ```csharp
   using Etagair.Core.System;
   using Etagair.Engine;
@@ -48,4 +49,26 @@ These lines of code create the engine object. The init method create the databas
   // the database is created or reused and opened, ready to the execution
   Console.WriteLine("Db initialized with success.");
 ```
+
+### Create a folder within an entity 
+Create a folder named "computers", add under it an entity having two properties.
+An entity haven't a name. Property of an entity is key-value pair. 
+
+F:computers\
+  E: 
+  "Name"= "Toshiba Satellite Core I7"
+  "Trademark"= "Toshiba"
+
+```csharp
+// create a folder, under the root
+Folder foldComputers = engine.Editor.CreateFolder(null, "computers");
+
+// create an entity, under the computers folder
+Entity toshibaCoreI7 = engine.Editor.CreateEntity(foldComputers);
+
+// Add 2 properties to the entity (key - value)
+engine.Editor.CreateProperty(toshibaCoreI7, "Name", "Toshiba Satellite Core I7");
+engine.Editor.CreateProperty(toshibaCoreI7, "Trademark", "Toshiba");
+```
+
 
