@@ -1,5 +1,6 @@
 ## What is Etagair?
 ![The Etagair Application](_Resx/Logo/Etagair_logo128.jpg)
+
 Etagair is a general purpose Configurator API for modeling and managing products, services, or everything else.
 
 It's developed in .NET/C# and it is provided as a set of several libraries. 
