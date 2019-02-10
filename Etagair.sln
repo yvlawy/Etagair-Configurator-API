@@ -51,6 +51,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Logo", "Logo", "{5D295211-5
 		_Resx\Logo\Etagair_logo128.jpg = _Resx\Logo\Etagair_logo128.jpg
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevUseFromNugetApp", "Dev\DevUseFromNugetApp\DevUseFromNugetApp.csproj", "{69F16855-5AC5-41DC-AFDD-366F8DBD5DCA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "license", "license", "{6CA0060B-08BA-40F7-AF89-AB04E04E96B8}"
+	ProjectSection(SolutionItems) = preProject
+		_BuildNuget\Model\license\license.txt = _BuildNuget\Model\license\license.txt
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -89,6 +96,10 @@ Global
 		{8BF6A991-7358-459A-ADA4-690FE274EA34}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8BF6A991-7358-459A-ADA4-690FE274EA34}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8BF6A991-7358-459A-ADA4-690FE274EA34}.Release|Any CPU.Build.0 = Release|Any CPU
+		{69F16855-5AC5-41DC-AFDD-366F8DBD5DCA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{69F16855-5AC5-41DC-AFDD-366F8DBD5DCA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{69F16855-5AC5-41DC-AFDD-366F8DBD5DCA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{69F16855-5AC5-41DC-AFDD-366F8DBD5DCA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -108,6 +119,8 @@ Global
 		{4A421E13-56A9-4DD4-A25C-05D98401B60B} = {7A878042-500B-47EF-BE2B-1752D0C55F3A}
 		{60BAA258-4F46-474B-A4DE-68136CEE4391} = {7A878042-500B-47EF-BE2B-1752D0C55F3A}
 		{5D295211-5169-4CD1-AED7-A6EE009C6438} = {E7320CFE-29A1-45D2-A91B-1F28AB950B32}
+		{69F16855-5AC5-41DC-AFDD-366F8DBD5DCA} = {E906CFF1-2E4C-47D6-9956-F8403C0AD44F}
+		{6CA0060B-08BA-40F7-AF89-AB04E04E96B8} = {60BAA258-4F46-474B-A4DE-68136CEE4391}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {BE06C0D3-9AB5-4286-A49B-6A438751863E}

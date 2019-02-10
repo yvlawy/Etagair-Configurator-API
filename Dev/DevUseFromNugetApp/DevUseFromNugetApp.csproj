@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Appli\10-Engine\10-Reposit\Etagair.Core.Reposit.Contract\Etagair.Core.Reposit.Contract.csproj" />
+    <ProjectReference Include="..\..\Appli\10-Engine\10-Reposit\Impl\Etagair.Core.Reposit.LiteDB\Etagair.Core.Reposit.LiteDB.csproj" />
+    <ProjectReference Include="..\..\Appli\10-Engine\Etagair.Core.System\Etagair.Core.System.csproj" />
+    <ProjectReference Include="..\..\Appli\10-Engine\Etagair.Core\Etagair.Core.csproj" />
+    <ProjectReference Include="..\..\Appli\10-Engine\Etagair.Engine\Etagair.Engine.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Data\dummy.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>

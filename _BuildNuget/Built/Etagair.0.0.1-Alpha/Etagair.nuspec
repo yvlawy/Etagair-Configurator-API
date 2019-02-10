@@ -9,9 +9,10 @@
     <projectUrl>https://github.com/yvlawy/Etagair-Configurator-API</projectUrl>
     <iconUrl>https://github.com/yvlawy/Etagair-Configurator-API/blob/master/_BuildNuget/Model/Etagair.png?raw=true</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <license type="file">license\license.txt</license>
     <description>General purpose Configurator API/Library for products, services and more...</description>
-    <summary>Application libraries built in .NET Standard 2.0</summary>
+    <summary>Application libraries built in C# .NET Standard 2.0</summary>
     <releaseNotes>First deployed version of the application</releaseNotes>
-    <tags>csharp dotnet</tags>
+    <tags>csharp dotnet configurator library api netcoreapp</tags>
   </metadata>
 </package>

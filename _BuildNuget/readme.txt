@@ -46,7 +46,7 @@ Built\Etagair.x.x.x.x\
   
 -Copy the 3 dll libraries:
 	(from the folder: Dev\DevApp\bin\debug)
-	6 dlls
+	5 dlls  (do not copy the InMemory lib)
 
 	into the path:
 		Model\lib\netcoreapp2.0\
