@@ -46,12 +46,10 @@ Built\Etagair.x.x.x.x\
   
 -Copy the 3 dll libraries:
 	(from the folder: Dev\DevApp\bin\debug)
-	Etagair.CommonDlgs.Defs.dll
-	Etagair.CommonDlgs.Impl.dll
-	Etagair.MVVMBase.dll
+	6 dlls
 
 	into the path:
-		Model\lib\net40\
+		Model\lib\netcoreapp2.0\
 		
 -Check the version of all the libraries
 
@@ -59,7 +57,7 @@ Built\Etagair.x.x.x.x\
 -Generate the package:
 (inside Visual Studio, in the package manager console)
 	>cd _BuildNuget\Built
-	> cd .\Etagair.x.x.x.x
+	>cd .\Etagair.x.x.x.x
 	>nuget pack
 
 the result:

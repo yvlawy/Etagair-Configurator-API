@@ -41,6 +41,14 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Model", "Model", "{60BAA258-4F46-474B-A4DE-68136CEE4391}"
 	ProjectSection(SolutionItems) = preProject
 		_BuildNuget\Model\Etagair.nuspec = _BuildNuget\Model\Etagair.nuspec
+		_BuildNuget\Model\Etagair.png = _BuildNuget\Model\Etagair.png
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_Resx", "_Resx", "{E7320CFE-29A1-45D2-A91B-1F28AB950B32}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Logo", "Logo", "{5D295211-5169-4CD1-AED7-A6EE009C6438}"
+	ProjectSection(SolutionItems) = preProject
+		_Resx\Logo\Etagair_logo128.jpg = _Resx\Logo\Etagair_logo128.jpg
 	EndProjectSection
 EndProject
 Global
@@ -99,6 +107,7 @@ Global
 		{8BF6A991-7358-459A-ADA4-690FE274EA34} = {51AD828F-AE6F-4EFB-A249-5993E524B443}
 		{4A421E13-56A9-4DD4-A25C-05D98401B60B} = {7A878042-500B-47EF-BE2B-1752D0C55F3A}
 		{60BAA258-4F46-474B-A4DE-68136CEE4391} = {7A878042-500B-47EF-BE2B-1752D0C55F3A}
+		{5D295211-5169-4CD1-AED7-A6EE009C6438} = {E7320CFE-29A1-45D2-A91B-1F28AB950B32}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {BE06C0D3-9AB5-4286-A49B-6A438751863E}
