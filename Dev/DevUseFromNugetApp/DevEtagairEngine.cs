@@ -1,4 +1,5 @@
-﻿using Etagair.Core.System;
+﻿using Etagair.Core;
+using Etagair.Core.System;
 using Etagair.Engine;
 using System;
 

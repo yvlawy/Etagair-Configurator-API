@@ -4,12 +4,13 @@ namespace DevUseFromNugetApp
 {
     /// <summary>
     /// To test the nuget package.
-    /// todo: import the nuget!!
+    /// Do Not reference projects! must use nuget to test it.
     /// </summary>
     class Program
     {
         static void Main(string[] args)
         {
+
             DevEtagairEngine devEtagairEngine = new DevEtagairEngine();
             devEtagairEngine.Run();
 

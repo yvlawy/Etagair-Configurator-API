@@ -12,24 +12,20 @@ namespace Etagair.Core
     {
         IEtagairReposit _reposit;
 
-
-        //public EtagairCore(IEtagairReposit reposit)
-        //{
-        //    _reposit = reposit;
-        //    Searcher = new Searcher(reposit);
-        //    Editor = new Editor(reposit, Searcher);
-        //    EditorTempl = new EditorTempl(reposit);
-        //    ProcessTempl = new ProcessTempl(reposit);
-        //}
-
         public EtagairCore()
         {
+            LastErrorMsg = "";
             _reposit = null;
             Searcher = null;
             Editor = null;
             EditorTempl = null;
             ProcessTempl = null;
         }
+
+        /// <summary>
+        /// The last error message occurs in the core.
+        /// </summary>
+        public string LastErrorMsg { get; private set; }
 
         /// <summary>
         /// To build final objects: folder, entity and selection.
@@ -73,8 +69,9 @@ namespace Etagair.Core
                 }
 
                 return OpenDb();
-            }catch
+            }catch(Exception e)
             {
+                LastErrorMsg = e.ToString();
                 return false;
             }
         }

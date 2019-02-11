@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>Etagair</id>
-    <version>0.0.1-Alpha</version>
+    <version>0.0.3-alpha</version>
     <title>Etagair</title>
     <authors>lawy</authors>
     <owners>lawy</owners>
@@ -14,5 +14,11 @@
     <summary>Application libraries are built in C# .NET Standard 2.0</summary>
     <releaseNotes>First deployed version of the application</releaseNotes>
     <tags>csharp dotnet configurator library api netcoreapp</tags>
+
+    <!-- Dependencies are automatically installed when the package is installed -->
+    <dependencies>
+      <dependency id="LiteDB" version="4.1.4" />
+    </dependencies>
+
   </metadata>
 </package>
