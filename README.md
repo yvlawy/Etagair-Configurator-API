@@ -23,7 +23,6 @@ For more details, see the [wiki](https://github.com/yvlawy/Etagair-Configurator-
 -Rich search of entities by properties criteria.
 
 ## Getting started
-
 ### Using clauses
 Create a C# application. Create the Etagair engine object.
 In the program, you have to include these using:
@@ -75,5 +74,12 @@ Entity toshibaCoreI7 = engine.Editor.CreateEntity(foldComputers);
 engine.Editor.CreateProperty(toshibaCoreI7, "Name", "Toshiba Satellite Core I7");
 engine.Editor.CreateProperty(toshibaCoreI7, "Trademark", "Toshiba");
 ```
+
+### Package on Nuget
+The application is ready to use and available on Nuget.
+The last version is 0.0.3-alpha.
+
+The web site: https://www.nuget.org/packages/Etagair/
+The last release: https://www.nuget.org/packages/Etagair/0.0.3-alpha
 
 
