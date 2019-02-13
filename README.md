@@ -10,7 +10,8 @@ Data are saved in a embedded database.
 For more details, see the [wiki](https://github.com/yvlawy/Etagair-Configurator-API/wiki)
 
 ## Key features
--Embedded .NET family assembly, platform independent with reference to one library: [LiteDB](https://www.nuget.org/packages/LiteDB/), a NoSql Document database.
+-Embedded .NET family assembly, platform independent with reference to one library: [LiteDB](https://www.nuget.org/packages/LiteDB/), 
+A lightweight embedded .NET NoSQL document store in a single datafile.
 
 -Management of complex objects : entities with properties (list of key-value).
 
