@@ -3,14 +3,14 @@
 
 Etagair is a general purpose Configurator API for modeling and managing products, services, or everything else.
 
-It's developed in .NET/C# and it is provided as a set of several libraries. 
+It's developed in C# language with .NEt Standard 2.0 and it is provided as a set of several libraries. 
 It's a back-office API, there is no UI.
 Data are saved in a embedded database.
 
 For more details, see the [wiki](https://github.com/yvlawy/Etagair-Configurator-API/wiki)
 
 ## Key features
--Embedded .NET family assembly, platform independent without references to other libraries.
+-Embedded .NET family assembly, platform independent with reference to one library: [LiteDB](https://www.nuget.org/packages/LiteDB/), a NoSql Document database.
 
 -Management of complex objects : entities with properties (list of key-value).
 
@@ -24,8 +24,8 @@ For more details, see the [wiki](https://github.com/yvlawy/Etagair-Configurator-
 
 ## Getting started
 ### Using clauses
-Create a C# application. Create the Etagair engine object.
-In the program, you have to include these using:
+Create a C# application. Import the Nuget package (see the link below).
+In the program, include these using:
 
 ```csharp
   using Etagair.Core.System;
