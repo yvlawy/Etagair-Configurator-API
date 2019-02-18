@@ -1,6 +1,7 @@
 ﻿using Etagair.Core.Reposit.Contract;
 using Etagair.Core.Reposit.InMemory;
 using Etagair.Core.Reposit.LiteDB;
+using Etagair.Core.System;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -85,6 +86,47 @@ namespace Etagair.Core.Tests
                 reposit = Common.CreateRepository_LiteDB(repositConfig);
 
             return Common.CreateCore(reposit);
+        }
+
+        /// <summary>
+        /// Return the property key content as a string.
+        /// can be a string or a textCodeId.
+        /// </summary>
+        /// <param name="propertyKeyBase"></param>
+        /// <returns></returns>
+        public static string GetPropertyKeyContent(PropertyKeyBase propertyKeyBase)
+        {
+            PropertyKeyString propKeyString = propertyKeyBase as PropertyKeyString;
+            if (propKeyString != null)
+                return propKeyString.Key;
+
+            PropertyKeyTextCode propKeyTextCode = propertyKeyBase as PropertyKeyTextCode;
+            if (propKeyTextCode != null)
+                return propKeyTextCode.TextCodeId;
+
+            return null;
+        }
+
+        /// <summary>
+        /// Return the property value content as a string.
+        /// Can be a string, a textCodeId.
+        /// Later: image,...
+        /// 
+        /// </summary>
+        /// <param name="propertyKeyBase"></param>
+        /// <returns></returns>
+        public static string GetPropertyValueContent(PropertyValueBase propertyValueBase)
+        {
+            PropertyValueString propValueString = propertyValueBase as PropertyValueString;
+            if (propValueString != null)
+                return propValueString.Value;
+
+            PropertyValueTextCode propValueTextCode = propertyValueBase as PropertyValueTextCode;
+            if (propValueTextCode != null)
+                return propValueTextCode.TextCodeId;
+
+            // TODO: implement others thpes: Image, ImageCode,...
+            return null;
         }
 
     }

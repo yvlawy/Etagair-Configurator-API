@@ -66,6 +66,7 @@ namespace DevApp
             core.Editor.DefineLanguage(LanguageCode.en);
             core.Editor.DefineLanguage(LanguageCode.en_GB); 
             core.Editor.DefineLanguage(LanguageCode.en_US);
+            core.Editor.DefineLanguage(LanguageCode.fr);
             core.Editor.DefineLanguage(LanguageCode.fr_FR);
 
 
@@ -97,9 +98,12 @@ namespace DevApp
         }
 
 
-        // TODO: gérer trad finale absente -> selectionne la mainLang
-        // exp: pas de texte en fr_FR mais existe en fr, prend ce dernier.
-
+        /// <summary>
+        /// entity with property:
+        /// TextCode key
+        /// Property group
+        /// </summary>
+        /// <param name="core"></param>
         static void BuildContent(EtagairCore core)
         {
             //----set defined (activate) language codes in the current catalog
@@ -153,13 +157,16 @@ namespace DevApp
             // Create a prop: string, imageCode
         }
 
+        // TODO: gérer trad finale absente -> selectionne la mainLang
+        // exp: pas de texte en fr_FR mais existe en fr, prend ce dernier.
+
         /// <summary>
         ///  select entities having a property key='Name'
         ///  
         ///     computers\
         ///         Ent: Name=Toshiba   Ok, selected
         ///         Ent: Name=Dell      Ok, selected
-        ///         Ent: Nom=HP         --NOT selected
+        ///         Ent: Company=HP     --NOT selected
         ///     
         /// </summary>
         /// <param name="core"></param>
@@ -184,7 +191,7 @@ namespace DevApp
 
             //----create entity
             Entity HPCoreI7 = core.Editor.CreateEntity(foldComputers);
-            core.Editor.CreateProperty(HPCoreI7, "Nom", "HP Core i7");
+            core.Editor.CreateProperty(HPCoreI7, "Company", "HP Core i7");
             core.Editor.CreateProperty(HPCoreI7, "TradeMark", "HP");
 
             //==== define the search: from the root folder, select all entities having a key prop called 'Name'
@@ -241,6 +248,8 @@ namespace DevApp
         static void Main(string[] args)
         {
             //TestCore();
+
+            // samples published in github
             DevEtagairEngine devEtagairEngine = new DevEtagairEngine();
             devEtagairEngine.Run();
 

@@ -19,9 +19,6 @@ namespace Etagair.Engine
         /// </summary>
         string _dbFileName = "etagair.db";
 
-        // repository
-        //IEtagairReposit _reposit = null;
-
         public EtagairEngine()
         {
             

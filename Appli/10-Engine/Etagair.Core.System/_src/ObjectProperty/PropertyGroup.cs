@@ -27,7 +27,9 @@ namespace Etagair.Core.System
         /// </summary>
         public string Id { get; set; }
 
-        // list of properties childs
+        /// <summary>
+        /// list of properties childs.
+        /// </summary>
         public List<PropertyBase> ListProperty { get; set; }
 
         public void AddProperty(PropertyBase property)

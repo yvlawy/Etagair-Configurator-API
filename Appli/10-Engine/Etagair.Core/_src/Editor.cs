@@ -460,6 +460,14 @@ namespace Etagair.Core
             return CreateProperty(entity, propertyParent, key, value);
         }
 
+        /// <summary>
+        /// Create a property (key-value) undeer a property group in an entity.
+        /// </summary>
+        /// <param name="entity"></param>
+        /// <param name="propertyParent"></param>
+        /// <param name="key"></param>
+        /// <param name="value"></param>
+        /// <returns></returns>
         public Property CreateProperty(Entity entity, PropertyGroup propertyParent, string key, string value)
         {
             // check the entity parent
@@ -488,7 +496,7 @@ namespace Etagair.Core
             property.SetKeyValue(propertyKey, propertyValue);
 
             // add the property under the root properties
-            entity.AddProperty(propertyParent, property);
+            propertyParent.AddProperty(property);
 
             // save the entity modification
             if (!_reposit.Builder.UpdateEntity(entity))

@@ -7,7 +7,7 @@ using System.Text;
 namespace Etagair.Core.Tests
 {
     [TestClass]
-    public class TestSearchFindEntity
+    public class TestFindEntity
     {
         public string RepositConfig = "InMemory";
 

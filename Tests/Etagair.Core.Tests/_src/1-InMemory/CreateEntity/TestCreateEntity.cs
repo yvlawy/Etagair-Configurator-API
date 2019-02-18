@@ -17,7 +17,7 @@ namespace Etagair.Core.Tests
         }
 
         /// <summary>
-        /// Create one entity under the root.
+        /// Create one empty entity under the root.
         /// </summary>
         [TestMethod]
         public void CreateEntityUnderRoot()
@@ -40,7 +40,7 @@ namespace Etagair.Core.Tests
         /// <summary>
         ///  
         /// $$$Root\
-        ///    Ent: Name=Toshiba   
+        ///    E: "Name"= "Toshiba"   
         ///     
         /// </summary>
         [TestMethod]
@@ -69,7 +69,7 @@ namespace Etagair.Core.Tests
         /// create a property, the key and the value are textCode.
         /// 
         /// $$$Root\
-        ///    Ent: Name=Toshiba   
+        ///    E: tc:"Name"= tc:"Toshiba"
         ///     
         /// </summary>
         [TestMethod]
@@ -101,7 +101,7 @@ namespace Etagair.Core.Tests
         ///  
         /// $$$Root\
         ///     computers\
-        ///         Ent: Name=Toshiba   
+        ///         E: "Name"= "Toshiba"   
         ///     
         /// </summary>
         [TestMethod]

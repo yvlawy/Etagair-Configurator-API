@@ -6,7 +6,7 @@ using System.Text;
 namespace Etagair.Core.Tests
 {
     [TestClass]
-    public class TestSearchFindEntity_LiteDB : TestSearchFindEntity
+    public class TestCreateEntityPropGroup_LiteDB: TestCreateEntityPropGroup
     {
         [TestInitialize]
         public new void Init()
@@ -22,5 +22,6 @@ namespace Etagair.Core.Tests
             //Common.RemoveLiteDBFile(RepositConfig);
             // TODO: pb files are used by another process.
         }
+
     }
 }
