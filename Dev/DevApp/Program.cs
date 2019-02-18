@@ -195,7 +195,7 @@ namespace DevApp
             core.Editor.CreateProperty(HPCoreI7, "TradeMark", "HP");
 
             //==== define the search: from the root folder, select all entities having a key prop called 'Name'
-            SearchEntity searchEntities = core.Searcher.CreateSearchEntity("EntitiesHavingPropName");
+            SearchEntity searchEntities = core.Searcher.CreateSearchEntity(SearchFolderScope.Defined);
 
             //--Add sources folders, set option: go inside folders childs
             // TODO: only one for now is managed

@@ -17,18 +17,76 @@ namespace Etagair.Core.Tests
 
         }
 
+        /// <summary>
+        /// Search entities having a property key content equals to "Name".
+        /// Source folder: from the root.
+        /// 
+        ///   Ent: Name=Toshiba   Ok, selected
+        /// </summary>
+        [TestMethod]
+        public void SearchEntities_OnePropKeyEqualsName()
+        {
+            EtagairCore core = Common.CreateCore(RepositConfig);
+
+            //==== creates entities, with prop
+            //----create entities
+            Entity toshibaCoreI7 = core.Editor.CreateEntity();
+            core.Editor.CreateProperty(toshibaCoreI7, "Name", "Toshiba Satellite Core I7");
+            core.Editor.CreateProperty(toshibaCoreI7, "TradeMark", "Toshiba");
+
+            //==== define the search: from the root folder, select all entities having a key prop called 'Name'
+            SearchEntity searchEntities = core.Searcher.CreateSearchEntity(SearchFolderScope.All);
+
+            //--Add sources folders, set option: go inside folders childs
+            // TODO: only one for now is managed
+            //core.Searcher.AddSourceFolder(searchEntities, foldComputers, true);
+
+            //--Add single criteria: property key text equals to 'Name'
+            SearchPropCriterionKeyText criterion = core.Searcher.AddCritPropKeyText(searchEntities, "Name");
+            criterion.TextMatch = CritOptionTextMatch.TextMatchExact;
+            criterion.PropKeyTextType = CritOptionPropKeyTextType.AllKeyType;
+
+            //==== execute the search, get the result: list of found entities
+            SearchEntityResult result = core.Searcher.ExecSearchEntity(searchEntities);
+
+            // check found entities
+            Assert.AreEqual(1, result.ListEntityId.Count, "One found entities expected");
+
+            bool found;
+            found = result.ListEntityId.Contains(toshibaCoreI7.Id);
+            Assert.IsTrue(found, "The entity id toshibaCoreI7 should be selected");
+        }
+
+
+        /// <summary>
+        ///  select entities having a property key='Name'
+        ///  Search in the root folder only, not in subfolder.
+        ///  
+        /// Ent: Name=Toshiba   Ok, selected
+        ///  
+        /// Fold: computers\
+        ///   Ent: Name=Dell      --->NOT seleted
+        ///     
+        /// </summary>
+        [TestMethod]
+        public void SearchEntities_Root_OnePropKeyEqualsName()
+        {
+            //ici();
+            Assert.Fail("Not yet implemented!");
+        }
 
         /// <summary>
         ///  select entities having a property key='Name'
         ///  Search in the root folder: in all folders.
         ///  
-        ///  Ent: Name=Toshiba   Ok, selected
-        ///  Ent: Name=Dell      Ok, selected
-        ///  Ent: Nom=HP         --->NOT seleted
+        /// Fold: computers\
+        ///   Ent: Name=Toshiba   Ok, selected
+        ///   Ent: Name=Dell      Ok, selected
+        ///   Ent: Nom=HP         --->NOT seleted
         ///     
         /// </summary>
         [TestMethod]
-        public void SearchEntitiesOnePropKeyEqualsName()
+        public void SearchEntities_DefinedFolders_OnePropKeyEqualsName()
         {
             EtagairCore core = Common.CreateCore(RepositConfig);
 
@@ -50,7 +108,7 @@ namespace Etagair.Core.Tests
             core.Editor.CreateProperty(HPCoreI7, "TradeMark", "HP");
 
             //==== define the search: from the root folder, select all entities having a key prop called 'Name'
-            SearchEntity searchEntities = core.Searcher.CreateSearchEntity();
+            SearchEntity searchEntities = core.Searcher.CreateSearchEntity(SearchFolderScope.Defined);
 
             //--Add sources folders, set option: go inside folders childs
             // TODO: only one for now is managed
@@ -114,7 +172,7 @@ namespace Etagair.Core.Tests
             core.Editor.CreateProperty(HPCoreI7, "TradeMark", "HP");
 
             //==== define the search: from the root folder, select all entities having a key prop called 'Name'
-            SearchEntity searchEntities = core.Searcher.CreateSearchEntity("EntitiesHavingPropName");
+            SearchEntity searchEntities = core.Searcher.CreateSearchEntity("EntitiesHavingPropName", SearchFolderScope.Defined);
 
             //--Add sources folders, set option: go inside folders childs
             // TODO: only one for now is managed

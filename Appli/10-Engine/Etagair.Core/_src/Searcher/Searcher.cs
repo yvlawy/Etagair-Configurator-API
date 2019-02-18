@@ -307,9 +307,9 @@ namespace Etagair.Core
         /// </summary>
         /// <param name="name"></param>
         /// <returns></returns>
-        public SearchEntity CreateSearchEntity()
+        public SearchEntity CreateSearchEntity(SearchFolderScope scope)
         {
-            return CreateSearchEntity("search-" + Guid.NewGuid().ToString());
+            return CreateSearchEntity("search-" + Guid.NewGuid().ToString(), scope);
         }
 
         /// <summary>
@@ -317,7 +317,7 @@ namespace Etagair.Core
         /// </summary>
         /// <param name="name"></param>
         /// <returns></returns>
-        public SearchEntity CreateSearchEntity(string name)
+        public SearchEntity CreateSearchEntity(string name, SearchFolderScope scope)
         {
             // check the name
             if (string.IsNullOrWhiteSpace(name))
@@ -327,6 +327,7 @@ namespace Etagair.Core
 
             SearchEntity search = new SearchEntity();
             search.Name = name;
+            search.SearchFolderScope = scope;
 
             // save the search object
             ListSearchEntity.Add(search);
@@ -344,6 +345,10 @@ namespace Etagair.Core
         /// <returns></returns>
         public bool AddSourceFolder(SearchEntity searchEntity, Folder sourceFolder, bool goInsideFolderChilds)
         {
+            // only if the scope is ok
+            if (searchEntity.SearchFolderScope != SearchFolderScope.Defined)
+                return false;
+
             // check the folder
             // TODO: notNull, pas déjà ajouté, lien entre dossier!
 

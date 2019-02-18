@@ -14,6 +14,7 @@ namespace Etagair.Core.System
         public SearchEntity()
         {
             ListSearchEntitySrcFolder = new List<SearchEntitySrcFolder>();
+            SearchFolderScope = SearchFolderScope.RootOnly;
         }
 
         /// <summary>
@@ -23,6 +24,8 @@ namespace Etagair.Core.System
         public string Id { get; set; }
 
         public string Name { get; set; }
+
+        public SearchFolderScope SearchFolderScope { get; set; }
 
         /// <summary>
         /// list of source folders.
