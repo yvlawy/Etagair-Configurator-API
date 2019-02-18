@@ -307,10 +307,23 @@ namespace Etagair.Core
         /// </summary>
         /// <param name="name"></param>
         /// <returns></returns>
+        public SearchEntity CreateSearchEntity()
+        {
+            return CreateSearchEntity("search-" + Guid.NewGuid().ToString());
+        }
+
+        /// <summary>
+        /// Create a new searchEntity object.
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
         public SearchEntity CreateSearchEntity(string name)
         {
             // check the name
-            // TODO:
+            if (string.IsNullOrWhiteSpace(name))
+                return null;
+            if(ListSearchEntity.Find(se =>se.Name.Equals(name, StringComparison.InvariantCultureIgnoreCase))!=null)
+                return null;
 
             SearchEntity search = new SearchEntity();
             search.Name = name;
