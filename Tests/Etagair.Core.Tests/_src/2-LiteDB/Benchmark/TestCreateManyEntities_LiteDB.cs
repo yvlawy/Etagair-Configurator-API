@@ -94,7 +94,7 @@ namespace Etagair.Core.Tests
         }
 
         /// <summary>
-        /// Create 1000 empty entities takes 7-8 sec with LiteDB.
+        /// Create 1000 empty entities takes morethan 4min with LiteDB.
         /// On a std Hard Disk
         /// db size: 7,8Mo
         /// </summary>
