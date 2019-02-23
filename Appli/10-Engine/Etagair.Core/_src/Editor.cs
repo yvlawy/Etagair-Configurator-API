@@ -21,6 +21,8 @@ namespace Etagair.Core
             _searcher = searcher;
         }
 
+        #region Public Language
+
         /// <summary>
         /// Define a language to use in the current catalog.
         /// Used to translate text, image, ...
@@ -68,6 +70,7 @@ namespace Etagair.Core
             }
             return true;
         }
+        #endregion
 
         #region Public Create Methods.
 
@@ -223,7 +226,17 @@ namespace Etagair.Core
 
         #endregion
 
-        #region Public Folder/entity create methods.
+        #region Public Folder/entity methods.
+
+        /// <summary>
+        /// Return the root folder.
+        /// Containing: entities, subfolders and template (entity and folder).
+        /// </summary>
+        /// <returns></returns>
+        public Folder GetRootFolder()
+        {
+            return _reposit.Finder.GetRootFolder();
+        }
 
         /// <summary>
         /// Create a folder, under the root folder.
@@ -665,7 +678,6 @@ namespace Etagair.Core
 
         #endregion --Create property methods
         #endregion
-
 
         #region Private methods.
 
