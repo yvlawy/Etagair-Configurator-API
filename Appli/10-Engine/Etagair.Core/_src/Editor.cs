@@ -505,6 +505,73 @@ namespace Etagair.Core
             return property;
         }
 
+        /// <summary>
+        /// Create a property to an object: key - value, 
+        /// both are textCode (will be displayed translated depending on the language).
+        /// </summary>
+        /// <param name="entity"></param>
+        /// <param name="tcKey"></param>
+        /// <param name="tcValue"></param>
+        /// <returns></returns>
+        public Property CreateProperty(Entity entity, TextCode tcKey, string value)
+        {
+            // check the entity parent
+            if (entity == null)
+                return null;
+
+            // get the root group properties of the entity
+            PropertyGroup propertyParent = entity.PropertyRoot;
+
+            return CreateProperty(entity, propertyParent, tcKey, value);
+
+        }
+
+        /// <summary>
+        /// Create a property to an object: key - value, 
+        /// both are textCode (will be displayed translated depending on the language).
+        /// </summary>
+        /// <param name="entity"></param>
+        /// <param name="tcKey"></param>
+        /// <param name="tcValue"></param>
+        /// <returns></returns>
+        public Property CreateProperty(Entity entity, PropertyGroup propertyParent, TextCode tcKey, string value)
+        {
+            // check the entity parent
+            if (entity == null)
+                return null;
+
+            if (propertyParent == null)
+                propertyParent = entity.PropertyRoot;
+
+            if (tcKey == null)
+                return null;
+
+            // check the key, not used by an existing property
+            if (_searcher.FindPropertyByKey(entity, propertyParent, tcKey.Code, false) != null)
+                return null;
+
+            // create the property, set the key and the value
+            Property property = new Property();
+            property.PropGroupParentId = propertyParent.Id;
+
+            PropertyKeyTextCode propertyKey = new PropertyKeyTextCode();
+            propertyKey.TextCodeId = tcKey.Id;
+
+            PropertyValueString propertyValue = new PropertyValueString();
+            propertyValue.Value = value;
+            property.SetKeyValue(propertyKey, propertyValue);
+
+            // add the property under the root properties
+            entity.AddProperty(propertyParent, property);
+
+            // save the entity modification
+            if (!_reposit.Builder.UpdateEntity(entity))
+                return null;
+
+            return property;
+        }
+
+
         public PropertyGroup CreatePropertyGroup(Entity entity, string key)
         {
             // check the entity parent

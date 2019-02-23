@@ -325,14 +325,17 @@ namespace Etagair.Core
             if(ListSearchEntity.Find(se =>se.Name.Equals(name, StringComparison.InvariantCultureIgnoreCase))!=null)
                 return null;
 
-            SearchEntity search = new SearchEntity();
-            search.Name = name;
-            search.SearchFolderScope = scope;
+            SearchEntity searchEntity = new SearchEntity();
+            searchEntity.Name = name;
+            searchEntity.SearchFolderScope = scope;
+
+            // manage the root folder case, depending on the scope
+            ManageRootFolderCase(searchEntity, scope);
 
             // save the search object
-            ListSearchEntity.Add(search);
+            ListSearchEntity.Add(searchEntity);
 
-            return search;
+            return searchEntity;
         }
 
         /// <summary>
@@ -345,7 +348,7 @@ namespace Etagair.Core
         /// <returns></returns>
         public bool AddSourceFolder(SearchEntity searchEntity, Folder sourceFolder, bool goInsideFolderChilds)
         {
-            // only if the scope is ok
+            // only if the scope autorize it
             if (searchEntity.SearchFolderScope != SearchFolderScope.Defined)
                 return false;
 
@@ -477,6 +480,41 @@ namespace Etagair.Core
         #endregion
 
         #region Private methods
+
+        /// <summary>
+        /// Manage the root folder case, depending on the scope.
+        /// </summary>
+        /// <param name="searchEntity"></param>
+        /// <param name="scope"></param>
+        /// <returns></returns>
+        private bool ManageRootFolderCase(SearchEntity searchEntity, SearchFolderScope scope)
+        {
+            if (scope == SearchFolderScope.Defined)
+                // nothing to do, the user should define source folder
+                return true;
+
+            // get the root folder
+            Folder rootFolder = _reposit.Finder.GetRootFolder();
+
+            // go inside sub-folders
+            if (scope == SearchFolderScope.All)
+            {
+                // add it to search object
+                searchEntity.AddSourceFolder(rootFolder, true);
+                return true;
+            }
+
+            // doesn't go inside sub-folders
+            if (scope == SearchFolderScope.RootOnly)
+            {
+                // add it to search object
+                searchEntity.AddSourceFolder(rootFolder, false);
+                return true;
+            }
+
+            // error?
+            return false;
+        }
 
         // is the property key a textCode?
         private bool IsKeyMatchProperty(PropertyBase property, string key, TextCode tcKey)

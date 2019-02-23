@@ -90,6 +90,11 @@ namespace Etagair.Core
         {
             string keyText;
 
+            // filter according to the key type: string, TextCode or All
+            if (!FilterOnKeyType(property.Key, propCritKeyTextWork))
+                // not selected
+                return true;
+
             // the key can be a string or a textCode
             if (!GetKeyText(property.Key, out keyText))
                 // error
@@ -98,46 +103,87 @@ namespace Etagair.Core
             //----case TextMatchExact
             if (propCritKeyTextWork.TextMatch == CritOptionTextMatch.TextMatchExact)
             {
-                if (propCritKeyTextWork.TextSensitive == CritOptionTextSensitive.No)
-                {
-                    if (propCritKeyTextWork.KeyText.Equals(keyText))
-                        // ok, match
-                        propCritKeyTextWork.PropertyMatch = PropertyMatch.Yes;
-                    else
-                        propCritKeyTextWork.PropertyMatch = PropertyMatch.No;
-
-                    return true;
-                }else
-                {
-                    if (propCritKeyTextWork.KeyText.Equals(keyText, StringComparison.InvariantCultureIgnoreCase))
-                        // ok, match
-                        propCritKeyTextWork.PropertyMatch = PropertyMatch.Yes;
-                    else
-                        propCritKeyTextWork.PropertyMatch = PropertyMatch.No;
-                    return true;
-                }
+                return AnalyzeTextMatchExact(propCritKeyTextWork, keyText);
             }
 
             //----case contains
-            if (propCritKeyTextWork.TextMatch == CritOptionTextMatch.TextMatchContains)
-            {
-                // todo: +tard
-                throw new Exception("AnalyzeEntityOnCritKeyText_Prop failure, typeMatch=TextMatchContains not yet implemented");
-            }
+            //if (propCritKeyTextWork.TextMatch == CritOptionTextMatch.TextMatchContains)
+            //{
+            //    // todo: +tard
+            //    throw new Exception("AnalyzeEntityOnCritKeyText_Prop failure, typeMatch=TextMatchContains not yet implemented");
+            //}
 
             //----case regex
-            if (propCritKeyTextWork.TextMatch == CritOptionTextMatch.TextMatchRegex)
-            {
-                // todo: +tard
-                throw new Exception("AnalyzeEntityOnCritKeyText_Prop failure, typeMatch=TextMatchRegex not yet implemented");
-            }
+            //if (propCritKeyTextWork.TextMatch == CritOptionTextMatch.TextMatchRegex)
+            //{
+            //    // todo: +tard
+            //    throw new Exception("AnalyzeEntityOnCritKeyText_Prop failure, typeMatch=TextMatchRegex not yet implemented");
+            //}
 
             // error
             throw new Exception("AnalyzeEntityOnCritKeyText_Prop failure, type match not yet implemented.");
         }
 
         /// <summary>
+        /// filter according to the key type: string, TextCode or All
+        /// </summary>
+        /// <param name=""></param>
+        /// <param name=""></param>
+        /// <returns></returns>
+        private bool FilterOnKeyType(PropertyKeyBase propertyKeyBase, SearchPropCriterionKeyTextWork propCritKeyTextWork)
+        {
+            // match all key type: string and TextCode
+            if (propCritKeyTextWork.PropKeyTextType == CritOptionPropKeyTextType.AllKeyType)
+                return true;
+
+            // get the type of the prop key
+            PropertyKeyString propKeyString = propertyKeyBase as PropertyKeyString;
+            if (propKeyString != null)
+            {
+                if (propCritKeyTextWork.PropKeyTextType == CritOptionPropKeyTextType.KeyStringOnly)
+                    return true;
+
+                return false;
+            }
+
+            // the prop key type is TextCode
+            if (propCritKeyTextWork.PropKeyTextType == CritOptionPropKeyTextType.KeyTextCodeOnly)
+                return true;
+
+            return false;
+        }
+
+        /// <summary>
+        /// Analyze the CritOptionTextMatch = MatchExact.
+        /// </summary>
+        /// <param name="propCritKeyTextWork"></param>
+        /// <param name="keyText"></param>
+        /// <returns></returns>
+        private bool AnalyzeTextMatchExact(SearchPropCriterionKeyTextWork propCritKeyTextWork, string keyText)
+        {
+            if (propCritKeyTextWork.TextSensitive == CritOptionTextSensitive.No)
+            {
+                if (propCritKeyTextWork.KeyText.Equals(keyText))
+                    // ok, match
+                    propCritKeyTextWork.PropertyMatch = PropertyMatch.Yes;
+                else
+                    propCritKeyTextWork.PropertyMatch = PropertyMatch.No;
+
+                return true;
+            }
+
+            if (propCritKeyTextWork.KeyText.Equals(keyText, StringComparison.InvariantCultureIgnoreCase))
+                // ok, match
+                propCritKeyTextWork.PropertyMatch = PropertyMatch.Yes;
+            else
+                propCritKeyTextWork.PropertyMatch = PropertyMatch.No;
+
+            return true;           
+        }
+
+        /// <summary>
         /// The property key text can be a string or a textCode.
+        /// If its a textCode, go in the repository to read the textCode by the id.
         /// </summary>
         /// <param name="propCritKeyTextWork"></param>
         /// <param name="propertyKeyBase"></param>

@@ -11,9 +11,9 @@ namespace Etagair.Core.System
     /// </summary>
     public enum CritOptionTextMatch
     {
-        TextMatchRegex,
         TextMatchExact,
-        TextMatchContains
+        //TextMatchRegex,
+        //TextMatchContains
     }
 
     public enum CritOptionTextSensitive
@@ -22,6 +22,34 @@ namespace Etagair.Core.System
         No
     }
     
+    /// <summary>
+    /// Match property key text type:
+    /// string, TextCode or Both/All.
+    /// </summary>
+    public enum CritOptionPropKeyTextType
+    {
+        AllKeyType,
+        KeyStringOnly,
+        KeyTextCodeOnly
+    }
+
+    /// <summary>
+    /// Match property key: final, group or All.
+    /// FinalGroupAll
+    /// </summary>
+    public enum CritOptionPropKeyType
+    {
+        // can match both: final and group property
+        All,
+        OnlyFinal,
+        OnlyGroup
+    }
+
+    /// <summary>
+    /// The scope.
+    /// Scan Only direct childs of the root property group of the entity.
+    /// or scan inside sub property groups.
+    /// </summary>
     public enum CritOptionPropChildsScan
     {
         /// <summary>
@@ -32,30 +60,8 @@ namespace Etagair.Core.System
         /// <summary>
         /// scan only direct property childs.
         /// </summary>
-        OnlyDirectChilds,
+        //OnlyDirectChilds,
     }
-
-    /// <summary>
-    /// property key text type.
-    /// (data type)
-    /// A key can be a string or a textCode. 
-    /// </summary>
-    public enum CritOptionPropKeyTextType
-    {
-        AllKeyType,
-        KeyStringOnly,
-        KeyTextCodeOnly
-    }
-
-    // property key type: All, OnlyFinal, OnlyGroup
-    public enum CritOptionPropKeyType
-    {
-        // can match both: final and group property
-        All,
-        OnlyFinal,
-        OnlyGroup
-    }
-
 
     /// <summary>
     /// A final search expression operand.
