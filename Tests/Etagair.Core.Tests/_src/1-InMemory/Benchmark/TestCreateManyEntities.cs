@@ -41,8 +41,8 @@ namespace Etagair.Core.Tests
             stopwatch.Stop();
 
             // check the entities count
-            // TODO 
-            //core.Editor.GetRootFolder()
+            int countFound = core.Editor.GetRootFolder().ListChildId.Count;
+            Assert.AreEqual(count, countFound, "Missing some entities!");
             
             Assert.IsTrue(stopwatch.Elapsed.TotalMilliseconds < 10, "Should takes less than 10 millisec");
         }
