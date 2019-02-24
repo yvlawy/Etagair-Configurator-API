@@ -51,12 +51,16 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Logo", "Logo", "{5D295211-5
 		_Resx\Logo\Etagair_logo128.jpg = _Resx\Logo\Etagair_logo128.jpg
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevUseFromNugetApp", "Dev\DevUseFromNugetApp\DevUseFromNugetApp.csproj", "{69F16855-5AC5-41DC-AFDD-366F8DBD5DCA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DevUseFromNugetApp", "Dev\DevUseFromNugetApp\DevUseFromNugetApp.csproj", "{69F16855-5AC5-41DC-AFDD-366F8DBD5DCA}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "license", "license", "{6CA0060B-08BA-40F7-AF89-AB04E04E96B8}"
 	ProjectSection(SolutionItems) = preProject
 		_BuildNuget\Model\license\license.txt = _BuildNuget\Model\license\license.txt
 	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Samples", "Samples", "{8A299553-3D09-44A2-B47E-6B0FD28EDDFF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SamplesApp", "Samples\SamplesApp\SamplesApp.csproj", "{370636F9-B152-4573-BD2D-BC56DD27AEFA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -100,6 +104,10 @@ Global
 		{69F16855-5AC5-41DC-AFDD-366F8DBD5DCA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{69F16855-5AC5-41DC-AFDD-366F8DBD5DCA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{69F16855-5AC5-41DC-AFDD-366F8DBD5DCA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{370636F9-B152-4573-BD2D-BC56DD27AEFA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{370636F9-B152-4573-BD2D-BC56DD27AEFA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{370636F9-B152-4573-BD2D-BC56DD27AEFA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{370636F9-B152-4573-BD2D-BC56DD27AEFA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -121,6 +129,7 @@ Global
 		{5D295211-5169-4CD1-AED7-A6EE009C6438} = {E7320CFE-29A1-45D2-A91B-1F28AB950B32}
 		{69F16855-5AC5-41DC-AFDD-366F8DBD5DCA} = {E906CFF1-2E4C-47D6-9956-F8403C0AD44F}
 		{6CA0060B-08BA-40F7-AF89-AB04E04E96B8} = {60BAA258-4F46-474B-A4DE-68136CEE4391}
+		{370636F9-B152-4573-BD2D-BC56DD27AEFA} = {8A299553-3D09-44A2-B47E-6B0FD28EDDFF}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {BE06C0D3-9AB5-4286-A49B-6A438751863E}

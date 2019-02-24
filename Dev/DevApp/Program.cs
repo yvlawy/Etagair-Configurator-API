@@ -198,13 +198,12 @@ namespace DevApp
             SearchEntity searchEntities = core.Searcher.CreateSearchEntity(SearchFolderScope.Defined);
 
             //--Add sources folders, set option: go inside folders childs
-            // TODO: only one for now is managed
             core.Searcher.AddSourceFolder(searchEntities, foldComputers, true);
 
             //--Add criteria: (a boolean expression)
             SearchPropCriterionKeyText criterion = core.Searcher.AddCritPropKeyText(searchEntities, "Name");
-            criterion.TextMatch = CritOptionTextMatch.TextMatchExact;
             criterion.PropKeyTextType = CritOptionPropKeyTextType.AllKeyType;
+            criterion.TextMatch = CritOptionTextMatch.TextMatchExact;
 
             //--set options
             // TODO: lesquelles?
@@ -245,15 +244,19 @@ namespace DevApp
             //TestSearchEntity(core);
         }
 
+        /// <summary>
+        /// Use to develop new functionnalities.
+        /// See th SamplesApp console application to have stable code samples.
+        /// </summary>
+        /// <param name="args"></param>
         static void Main(string[] args)
         {
-            //TestCore();
+            Console.WriteLine("====Etagair dev:");
 
-            // samples published in github
-            DevEtagairEngine devEtagairEngine = new DevEtagairEngine();
-            devEtagairEngine.Run();
+            TestCore();
 
-            Console.WriteLine("Ends.");
+            Console.WriteLine("Input a key ...");
+            Console.ReadKey();
         }
     }
 }

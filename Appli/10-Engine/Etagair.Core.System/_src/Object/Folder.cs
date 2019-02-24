@@ -19,7 +19,7 @@ namespace Etagair.Core.System
 
 
         /// <summary>
-        /// list of childs; can be fodler, object or selectOjects.
+        /// list of childs; can be folder, object or selectOjects.
         /// </summary>
         public IDictionary<string, ObjectType> ListChildId { get; set; }
 
