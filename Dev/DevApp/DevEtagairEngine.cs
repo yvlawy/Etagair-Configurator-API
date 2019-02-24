@@ -130,7 +130,7 @@ namespace DevApp
             Console.WriteLine("-Search result: nb=" + result.ListEntityId.Count);
             foreach (string entityId in result.ListEntityId)
             {
-                // load the entity
+                // displays the id of the entity
                 Console.WriteLine("Ent, id: " + entityId);
 
                 // load the entity and display it

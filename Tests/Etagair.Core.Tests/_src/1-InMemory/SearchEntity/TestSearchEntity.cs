@@ -207,13 +207,12 @@ namespace Etagair.Core.Tests
             SearchEntity searchEntities = core.Searcher.CreateSearchEntity(SearchFolderScope.Defined);
 
             //--Add sources folders, set option: go inside folders childs
-            // TODO: only one for now is managed
             core.Searcher.AddSourceFolder(searchEntities, foldComputers, true);
 
             //--Add single criteria: property key text equals to 'Name'
             SearchPropCriterionKeyText criterion = core.Searcher.AddCritPropKeyText(searchEntities, "Name");
-            criterion.TextMatch = CritOptionTextMatch.TextMatchExact;
             criterion.PropKeyTextType = CritOptionPropKeyTextType.AllKeyType;
+            criterion.TextMatch = CritOptionTextMatch.TextMatchExact;
 
             //==== execute the search, get the result: list of found entities
             SearchEntityResult result = core.Searcher.ExecSearchEntity(searchEntities);

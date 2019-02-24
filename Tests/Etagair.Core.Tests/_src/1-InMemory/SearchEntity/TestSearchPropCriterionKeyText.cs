@@ -41,6 +41,7 @@ namespace Etagair.Core.Tests
             //--Add single criteria: property key text equals to 'Name'
             SearchPropCriterionKeyText criterion = core.Searcher.AddCritPropKeyText(searchEntities, "Name");
             criterion.PropKeyTextType = CritOptionPropKeyTextType.AllKeyType;
+            criterion.TextSensitive = CritOptionTextSensitive.No;
             criterion.TextMatch = CritOptionTextMatch.TextMatchExact;
 
             //==== execute the search, get the result: list of found entities
