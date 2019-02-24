@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>Etagair</id>
-    <version>0.0.3-alpha</version>
+    <version>0.0.4-alpha</version>
     <title>Etagair</title>
     <authors>lawy</authors>
     <owners>lawy</owners>
@@ -10,10 +10,10 @@
     <iconUrl>https://github.com/yvlawy/Etagair-Configurator-API/blob/master/_BuildNuget/Model/Etagair.png?raw=true</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <license type="file">license\license.txt</license>
-    <description>General purpose Configurator API/Library for products, services and more... See the gitHub repository and wiki: https://github.com/yvlawy/Etagair-Configurator-API.</description>
-    <summary>Application libraries are built in C# .NET Standard 2.0</summary>
-    <releaseNotes>First deployed version of the application</releaseNotes>
-    <tags>csharp dotnet configurator library api netcoreapp</tags>
+    <description>General purpose Configurator API/Library for products, services and more... With many useful functionnalities: Entity/Folder, Search, Templating, Multilingual... Built in C# .NET Standard 2.0.</description>
+    <summary>General purpose Configurator API/Library for products, services and more... With many useful functionnalities.</summary>
+    <releaseNotes>Improve the entities search.</releaseNotes>
+    <tags>csharp netcoreapp dotnet library api configurator config configuration</tags>
 
     <!-- Dependencies are automatically installed when the package is installed -->
     <dependencies>

@@ -44,14 +44,19 @@ Built\Etagair.x.x.x.x\
   (from the model folder)
 	into the path: on the root (into Built\Etagair.x.x.x.x\)
   
--Copy the 3 dll libraries:
-	(from the folder: Dev\DevApp\bin\debug)
-	5 dlls  (do not copy the InMemory lib)
+-Copy the dll libraries:
+	get the 5 libs from the folder: Dev\DevApp\bin\debug\netcoreapp2.0
+	(do not copy the InMemory lib):
+	 -Etagair.Core.dll
+	 -Etagair.Core.Reposit.Contract.dll
+	 -Etagair.Core.Reposit.LiteDB.dll
+	 -Etagair.Core.System.dll
+	 -Etagair.Engine.dll
 
 	into the path:
 		Model\lib\netcoreapp2.0\
 		
--Check the version of all the libraries
+-Check the version of each library!!
 
 
 -Generate the package:
