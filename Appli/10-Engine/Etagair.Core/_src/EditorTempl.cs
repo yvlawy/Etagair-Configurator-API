@@ -150,7 +150,19 @@ namespace Etagair.Core
 
         }
 
-        //-----------------------------
+
+
+        /// <summary>
+        /// Create a property template.
+        /// The string value is null.
+        /// </summary>
+        /// <param name="entityTempl"></param>
+        /// <param name="tcKey"></param>
+        /// <returns></returns>
+        public PropTempl CreatePropTemplValueStringNull(EntityTempl entityTempl, string key)
+        {
+            return CreatePropTempl(entityTempl, key, null);
+        }
 
         /// <summary>
         /// Create a property template.
@@ -196,6 +208,19 @@ namespace Etagair.Core
 
         /// <summary>
         /// Create a property template.
+        /// The TextCode value is null.
+        /// </summary>
+        /// <param name="entityTempl"></param>
+        /// <param name="tcKey"></param>
+        /// <returns></returns>
+        public PropTempl CreatePropTemplValueTextCodeNull(EntityTempl entityTempl, TextCode tcKey)
+        {
+            return CreatePropTempl(entityTempl, tcKey, (TextCode)null);
+        }
+
+        /// <summary>
+        /// Create a property template.
+        /// to set a value to null, provide this parameter: (TextCode)null.
         /// </summary>
         /// <param name="entityTempl"></param>
         /// <param name="tcKey"></param>

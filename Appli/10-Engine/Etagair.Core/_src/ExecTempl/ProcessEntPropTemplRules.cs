@@ -39,7 +39,7 @@ namespace Etagair.Core
             foreach (PropTemplRuleBase rule in propTempl.ListRule)
             {
                 // 2.1- is rule PropValueSetOnInstance?
-                PropTemplRuleValueSetOnInst ruleValueSetOnInst = rule as PropTemplRuleValueSetOnInst;
+                PropTemplRuleValueToSet ruleValueSetOnInst = rule as PropTemplRuleValueToSet;
                 if (ruleValueSetOnInst != null)
                 {
                     res &= ExecPropTemplRuleValueSetOnInst(propTempl, propGroupParent, ruleValueSetOnInst, listAction, listRulesNeedActions);
@@ -112,7 +112,7 @@ namespace Etagair.Core
         /// <param name="propTempl"></param>
         /// <param name="ruleValueSetOnInst"></param>
         /// <returns></returns>
-        private bool ExecPropTemplRuleValueSetOnInst(PropTempl propTempl, PropertyGroup propGroupParent, PropTemplRuleValueSetOnInst ruleValueSetOnInst, List<PropTemplRuleActionBase> listAction, List<PropTemplRuleBase> listRulesNeedActions)
+        private bool ExecPropTemplRuleValueSetOnInst(PropTempl propTempl, PropertyGroup propGroupParent, PropTemplRuleValueToSet ruleValueSetOnInst, List<PropTemplRuleActionBase> listAction, List<PropTemplRuleBase> listRulesNeedActions)
         {
 
             Property property = new Property();
@@ -134,7 +134,7 @@ namespace Etagair.Core
             }
 
             // check the type of the action, must match the rule type!
-            PropTemplRuleValueSetOnInstAction actionSetOnInst = action as PropTemplRuleValueSetOnInstAction;
+            PropTemplRuleActionValueToSet  actionSetOnInst = action as PropTemplRuleActionValueToSet ;
             if(actionSetOnInst==null)
             {
                 // error! action type is wrong
@@ -158,7 +158,7 @@ namespace Etagair.Core
         /// <param name="actionSetOnInst"></param>
         /// <param name="ruleValueSetOnInst"></param>
         /// <returns></returns>
-        private PropertyValueBase  CreatePropValueFromAction(PropTemplRuleValueSetOnInstAction actionSetOnInst, PropTemplRuleValueSetOnInst ruleValueSetOnInst)
+        private PropertyValueBase  CreatePropValueFromAction(PropTemplRuleActionValueToSet  actionSetOnInst, PropTemplRuleValueToSet ruleValueSetOnInst)
         {
             if (ruleValueSetOnInst.ValueType == PropValueType.String)
             {

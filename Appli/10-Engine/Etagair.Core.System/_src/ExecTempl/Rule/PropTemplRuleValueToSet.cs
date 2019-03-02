@@ -17,11 +17,11 @@ namespace Etagair.Core.System
     /// A property template rule:
     /// the property value have to be set on instantiation of the property.
     /// </summary>
-    public class PropTemplRuleValueSetOnInst : PropTemplRuleBase
+    public class PropTemplRuleValueToSet : PropTemplRuleBase
     {
-        public PropTemplRuleValueSetOnInst()
+        public PropTemplRuleValueToSet()
         {
-            Type = PropTemplRuleType.PropValueSetOnInstance;
+            Type = PropTemplRuleType.PropValueToSet;
         }
 
         /// <summary>

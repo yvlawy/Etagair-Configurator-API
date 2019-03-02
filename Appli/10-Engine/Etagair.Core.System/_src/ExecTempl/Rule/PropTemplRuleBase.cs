@@ -16,7 +16,7 @@ namespace Etagair.Core.System
         /// The property value will be set on instantiation of the property
         /// (The key is defined).
         /// </summary>
-        PropValueSetOnInstance,
+        PropValueToSet,
     }
 
     /// <summary>

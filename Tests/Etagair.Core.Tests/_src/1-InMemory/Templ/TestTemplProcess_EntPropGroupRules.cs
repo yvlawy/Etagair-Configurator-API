@@ -41,7 +41,7 @@ namespace Etagair.Core.Tests.TestTempl
             PropTempl propTemplType = core.EditorTempl.CreatePropTempl(entTemplComputer, propGroupTemplCore, "Type", null);
 
             // On prop type, Add Rule: add property, V=RULE:ToSet, type= string
-            PropTemplRuleValueSetOnInst rule = new PropTemplRuleValueSetOnInst();
+            PropTemplRuleValueToSet rule = new PropTemplRuleValueToSet();
             rule.ValueType = PropValueType.String;
             core.EditorTempl.AddPropTemplRule(entTemplComputer, propTemplType, rule);
 
@@ -52,7 +52,7 @@ namespace Etagair.Core.Tests.TestTempl
             Assert.AreEqual(TemplToInstStep.NeedAction, templToInst.NextStep, "the next step should be NeedAction");
 
             //---provide an action to the rule (to execute it automatically): Property value set on instantiation
-            PropTemplRuleValueSetOnInstAction action = new PropTemplRuleValueSetOnInstAction();
+            PropTemplRuleActionValueToSet  action = new PropTemplRuleActionValueToSet ();
             action.SetRule(rule);
             action.SetValueString("Intel");
 

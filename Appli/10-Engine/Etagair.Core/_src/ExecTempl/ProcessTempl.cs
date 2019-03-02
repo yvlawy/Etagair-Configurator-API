@@ -33,8 +33,7 @@ namespace Etagair.Core
         /// <returns></returns>
         public EntityTemplToInst CreateEntity(EntityTempl entityTempl)
         {
-            //List<PropTemplRuleActionBase> listAction = new List<PropTemplRuleActionBase>();
-            return CreateEntity(entityTempl, _reposit.Finder.GetRootFolder()); //,listAction);
+            return CreateEntity(entityTempl, _reposit.Finder.GetRootFolder()); 
         }
 
 
@@ -131,8 +130,8 @@ namespace Etagair.Core
         }
 
         /// <summary>
-        /// Create an entity from a template.
-        /// Before, need to call: StartCreateEntity and AddActionsToCreateEntity (if need actions).
+        /// Complete the creation of an entity from a template.
+        /// Need to be called to process rules.
         /// </summary>
         /// <param name="templToInst"></param>
         /// <returns></returns>
@@ -152,7 +151,6 @@ namespace Etagair.Core
             templToInst.Entity = entity;
 
             // set a key to the property root, from the template
-
             _processEntPropTempl.SetEntPropertyRootFromTempl(templToInst.EntityTempl, entity);
 
             if (!_reposit.Builder.SaveEntity(entity))

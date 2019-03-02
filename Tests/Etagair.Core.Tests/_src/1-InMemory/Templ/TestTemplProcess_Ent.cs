@@ -14,6 +14,8 @@ namespace Etagair.Core.Tests.TestTempl
     [TestClass]
     public class TestTemplProcess_Ent
     {
+        public string RepositConfig = "InMemory";
+
         /// <summary>
         /// Create an entity from a template.
         /// 
@@ -29,7 +31,7 @@ namespace Etagair.Core.Tests.TestTempl
         [TestMethod]
         public void EntOneProp_KString_VString()
         {
-            EtagairCore core = Common.CreateCoreInMemory();
+            EtagairCore core = Common.CreateCore(RepositConfig);
 
             // create an entity template to instantiate
             EntityTempl templComputer = core.EditorTempl.CreateEntityTempl("TemplComputer");
@@ -67,16 +69,16 @@ namespace Etagair.Core.Tests.TestTempl
         /// Has one prop, no rule.
         /// 
         /// EntTmpl: TemplComputer
-        ///     P: K=Type, V=Computer
+        ///     P: K=tc/Type, V=tc/Computer
         ///     
         /// Ent
-        ///     P: K=Type, V=Computer
+        ///     P: K=tc/Type, V=tc/Computer
         /// </summary>
         /// <param name="core"></param>
         [TestMethod]
         public void EntOneProp_KTextCode_VTextCode()
         {
-            EtagairCore core = Common.CreateCoreInMemory();
+            EtagairCore core = Common.CreateCore(RepositConfig);
 
             TextCode tcKeyType = core.Editor.CreateTextCode("Type");
             TextCode tcValueType = core.Editor.CreateTextCode("Computer");

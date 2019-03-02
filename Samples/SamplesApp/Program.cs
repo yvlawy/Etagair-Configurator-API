@@ -44,7 +44,11 @@ namespace SamplesApp
         {
             EntityTemplate entityTemplate = new EntityTemplate();
 
-            entityTemplate.CreateBasicEntityTemplate();
+            //entityTemplate.BasicEntityTemplate();
+
+            //entityTemplate.EntityTemplate_PropKeyAndValue_TextCode();
+
+            entityTemplate.EntityTemplate_Rule_PropValToSet();
         }
 
         /// <summary>

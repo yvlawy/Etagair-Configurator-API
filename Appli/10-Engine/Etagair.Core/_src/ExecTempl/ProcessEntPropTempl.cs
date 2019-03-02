@@ -121,6 +121,9 @@ namespace Etagair.Core
             // check on the entity level
             // TODO:
 
+            // todo: manage errors: entityTempl.ListError
+            // List<EntityTemplError> listError = new List<EntityTemplError>();
+            // 
             // check the properties
             return CheckConsistencyPropTempl(entityTempl, entityTempl.PropertyRoot, listRuleToExec);
         }
@@ -158,32 +161,52 @@ namespace Etagair.Core
                 return pbCount;
             }
 
-            // is the property a group?
+            // is the property a final one?
             PropTempl propTempl = propTemplBase as PropTempl;
             if (propTempl != null)
-            {
-                // check the key
-                if (propTempl.Key == null)
-                    // the key must exists!
-                    pbCount++;
-
-                // check the prop value is null
-                if (propTempl.Value.IsNull)
-                {
-                    // a rule must exists
-                    PropTemplRuleBase rule = propTempl.ListRule.Find(r => r.Type == PropTemplRuleType.PropValueSetOnInstance);
-                    if (rule == null)
-                        // no rule found!
-                        pbCount++;
-                    else
-                        listRuleToExec.Add(rule);
-                }
-                return pbCount;
-            }
+                return  CheckConsistencyPropTempl(entityTempl, propTempl, listRuleToExec);
 
             throw new Exception("PropTempl type not implemented!");
         }
 
+        /// <summary>
+        /// Check the consistency of the property template: key and value.
+        /// </summary>
+        /// <param name="entityTempl"></param>
+        /// <param name="propTempl"></param>
+        /// <param name="listRuleToExec"></param>
+        /// <returns></returns>
+        private int CheckConsistencyPropTempl(EntityTempl entityTempl, PropTempl propTempl, List<PropTemplRuleBase> listRuleToExec)
+        {
+            int pbCount = 0;
+
+            // check the key
+            if (propTempl.Key == null)
+                // the key must exists!
+                pbCount++;
+
+            // analyze all rules of the property template
+            foreach(PropTemplRuleBase rule in propTempl.ListRule)
+            {
+                // save the rule to execute
+                listRuleToExec.Add(rule);
+
+                // the propTempl contains the rule PropValueToSet?
+                if (rule.Type == PropTemplRuleType.PropValueToSet)
+                {
+                    // the property template value must be null!
+                    if (!propTempl.Value.IsNull)
+                        pbCount++;
+                }
+            }
+
+            // check: no rule to execute and the prop value is null-> error!
+            if(listRuleToExec.Count==0 && propTempl.Value.IsNull)
+                // todo:check the type of rule for tis case?? PropValueSetOnInstance
+                pbCount++;
+
+            return pbCount;
+        }
 
         #endregion
 

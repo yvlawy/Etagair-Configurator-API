@@ -5,11 +5,14 @@ using System.Text;
 namespace Etagair.Core.System
 {
     /// <summary>
+    /// Action, corresponding to a rule.
     /// The value of the property is provided by the action.
+    /// 
+    /// PropTemplRuleActionValueToSet
     /// </summary>
-    public class PropTemplRuleValueSetOnInstAction: PropTemplRuleActionBase   
+    public class PropTemplRuleActionValueToSet : PropTemplRuleActionBase   
     {
-        public PropTemplRuleValueSetOnInstAction()
+        public PropTemplRuleActionValueToSet ()
         { }
 
         public void SetValueString(string value)
