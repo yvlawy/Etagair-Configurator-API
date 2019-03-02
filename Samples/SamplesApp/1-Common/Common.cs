@@ -46,23 +46,39 @@ namespace SamplesApp
             DisplayAllObjects(engine, folderParent,0);
         }
 
-        public void DisplayEntity(EtagairEngine engine, Entity entity, int depth)
+        /// <summary>
+        /// Displays the content of an entity (properties childs).
+        /// </summary>
+        /// <param name="engine"></param>
+        /// <param name="entity"></param>
+        /// <param name="depth"></param>
+        public void DisplayEntity(EtagairEngine engine, Entity entity, int depth, bool displayRootProperty)
         {
             string indent = new string(' ', depth * 2);
             Console.WriteLine(indent + "Entity id: " + entity.Id);
-            Console.WriteLine(indent + "  Prop Count: " + entity.PropertyRoot.ListProperty.Count);
 
-            DisplayPropertyGroup(engine, entity, entity.PropertyRoot, depth + 1);
-
-
+            DisplayPropertyGroup(engine, entity, entity.PropertyRoot, depth + 1, displayRootProperty);
         }
 
-        public void DisplayPropertyGroup(EtagairEngine engine, Entity entity, PropertyGroup propertyGroupParent, int depth )
+        /// <summary>
+        /// Displays the propertyGroup.
+        /// (yes or not if its the root propertyGroup of the entity).
+        /// </summary>
+        /// <param name="engine"></param>
+        /// <param name="entity"></param>
+        /// <param name="propertyGroupParent"></param>
+        /// <param name="depth"></param>
+        /// <param name="displayRootProperty"></param>
+        public void DisplayPropertyGroup(EtagairEngine engine, Entity entity, PropertyGroup propertyGroupParent, int depth, bool displayRootProperty)
         {
             string indent = new string(' ', depth * 2);
 
             // display the proerty group itself
-            Console.WriteLine(indent + "PG: K=" + GetPropKeyText(engine, propertyGroupParent.Key) +"\\");
+            if (displayRootProperty)
+            {
+                depth++;
+                Console.WriteLine(indent + "PG: K=" + GetPropKeyText(engine, propertyGroupParent.Key) + "\\  (child(s) count= " + propertyGroupParent.ListProperty.Count+")");
+            }
 
             foreach (PropertyBase prop in propertyGroupParent.ListProperty)
             {
@@ -70,14 +86,14 @@ namespace SamplesApp
                 Property propChild = prop as Property;
                 if(propChild!=null)
                 {
-                    DisplayProperty(engine, propChild, depth+1);
+                    DisplayProperty(engine, propChild, depth);
                     continue;
                 }
 
                 PropertyGroup propertyGroupChild = prop as PropertyGroup;
                 if(propertyGroupChild!=null)
                 {
-                    DisplayPropertyGroup(engine, entity, propertyGroupChild, depth + 1);
+                    DisplayPropertyGroup(engine, entity, propertyGroupChild, depth, true);
                 }
             }
         }

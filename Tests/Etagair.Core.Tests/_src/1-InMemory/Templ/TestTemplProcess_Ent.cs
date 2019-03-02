@@ -38,10 +38,7 @@ namespace Etagair.Core.Tests.TestTempl
             core.EditorTempl.CreatePropTempl(templComputer, "Type", "Computer");
 
             //====Instanciate the template, create an entity, under the root folder
-            EntityTemplToInst templToInst = core.ProcessTempl.StartCreateEntity(templComputer);
-
-            // create the entity, use action
-            core.ProcessTempl.CreateEntity(templToInst);
+            EntityTemplToInst templToInst = core.ProcessTempl.CreateEntity(templComputer);
 
             //====check that the execution finishes with success
             Assert.AreEqual(TemplToInstState.Success, templToInst.State, "the state should be sucess");
@@ -91,13 +88,7 @@ namespace Etagair.Core.Tests.TestTempl
             core.EditorTempl.CreatePropTempl(templComputer, tcKeyType, tcValueType);
 
             //====Instanciate the template, create an entity, under the root folder
-            EntityTemplToInst templToInst = core.ProcessTempl.StartCreateEntity(templComputer);
-
-            Assert.AreEqual(TemplToInstState.InProgress, templToInst.State, "the state should be InProgress");
-            Assert.AreEqual(TemplToInstStep.Starts, templToInst.NextStep, "the next step should be Starts");
-
-            // create the entity, use action
-            core.ProcessTempl.CreateEntity(templToInst);
+            EntityTemplToInst templToInst = core.ProcessTempl.CreateEntity(templComputer);
 
             // check that the execution finishes with success
             Assert.AreEqual(TemplToInstState.Success, templToInst.State, "the state should be sucess");

@@ -42,13 +42,7 @@ namespace Etagair.Core.Tests.TestTempl
             PropTempl propTemplType = core.EditorTempl.CreatePropTempl(templComputer, propGroupTemplCore, "Type", "Intel");
 
             //====Instantiate
-            EntityTemplToInst templToInst = core.ProcessTempl.StartCreateEntity(templComputer);
-
-            Assert.AreEqual(TemplToInstState.InProgress, templToInst.State, "the state should be InProgress");
-            Assert.AreEqual(TemplToInstStep.Starts, templToInst.NextStep, "the next step should be Starts");
-
-            // create the entity, use action
-            core.ProcessTempl.CreateEntity(templToInst);
+            EntityTemplToInst templToInst = core.ProcessTempl.CreateEntity(templComputer);
 
             // check that the execution finishes with success
             Assert.AreEqual(TemplToInstState.Success, templToInst.State, "the state should be sucess");

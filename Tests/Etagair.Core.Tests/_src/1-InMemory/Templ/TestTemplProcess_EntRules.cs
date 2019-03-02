@@ -54,7 +54,7 @@ namespace Etagair.Core.Tests.TestTempl
             action.SetValueTextCodeId(tcNameValToshiba.Id);
 
             //====Instantiate the template, create an entity, under the root folder
-            EntityTemplToInst templToInst = core.ProcessTempl.StartCreateEntity(templComputer);
+            EntityTemplToInst templToInst = core.ProcessTempl.CreateEntity(templComputer);
 
             Assert.AreEqual(TemplToInstState.InProgress, templToInst.State, "the state should be InProgress");
             Assert.AreEqual(TemplToInstStep.NeedAction, templToInst.NextStep, "the next step should be NeedAction");
@@ -65,7 +65,7 @@ namespace Etagair.Core.Tests.TestTempl
             Assert.AreEqual(TemplToInstStep.Starts, templToInst.NextStep, "the next step should be Starts");
 
             // create the entity, use action
-            core.ProcessTempl.CreateEntity(templToInst);
+            core.ProcessTempl.CompleteCreateEntity(templToInst);
 
             // check that the execution finishes with success
             Assert.AreEqual(TemplToInstState.Success, templToInst.State, "the state should be sucess");

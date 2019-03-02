@@ -9,7 +9,7 @@ namespace SamplesApp
     public class EntityTemplate : Common
     {
         /// <summary>
-        /// Create an entity from a template.
+        /// Create an entity from a template (basic case).
         /// Has one property: key and value are string type.
         /// 
         /// ET: TemplComputer
@@ -27,40 +27,24 @@ namespace SamplesApp
 
             Console.WriteLine("Create an entity template.");
 
-            //====Create the template
-            // create an entity template to instantiate
+            //====Create an entity template
             EntityTempl templComputer = engine.EditorTempl.CreateEntityTempl("TemplComputer");
 
             // add property to the template, Key=Type, Value=Computer
             engine.EditorTempl.CreatePropTempl(templComputer, "Type", "Computer");
 
             //====Instanciate the template, create an entity, under the root folder
-
-            //--1.Start/Init create
-            EntityTemplToInst templToInst = engine.ProcessTempl.StartCreateEntity(templComputer);
-
-            Console.WriteLine("1. Starts Create entity:");
-            // the state should be InProgress
-            Console.WriteLine("  State: " + templToInst.State.ToString());
-            // the nextStep should be: Starts
-            Console.WriteLine("  NextStep: " + templToInst.NextStep.ToString());
-
-            //--2.Create the entity
-            engine.ProcessTempl.CreateEntity(templToInst);
+            EntityTemplToInst templToInst = engine.ProcessTempl.CreateEntity(templComputer);
 
             // the state should be Success
-            Console.WriteLine("2. Create entity:");
+            Console.WriteLine("Create entity:");
             Console.WriteLine("  State: " + templToInst.State.ToString());
             // the nextStep should be: Ends
             Console.WriteLine("  NextStep: " + templToInst.NextStep.ToString());
 
             // displays the entity id
             Console.WriteLine("\n-----Created entity id: " + templToInst.Entity.Id);
-            //Console.WriteLine(" Prop Count: " + templToInst.Entity.PropertyRoot.ListProperty.Count);
-            DisplayEntity(engine, templToInst.Entity,0);
-
-            // displays all object (to check)
-            //DisplayAllObjects(engine, engine.Editor.GetRootFolder());
+            DisplayEntity(engine, templToInst.Entity,0, true);
         }
     }
  }

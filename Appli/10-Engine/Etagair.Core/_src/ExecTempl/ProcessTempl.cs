@@ -31,106 +31,12 @@ namespace Etagair.Core
         /// </summary>
         /// <param name="entityTempl"></param>
         /// <returns></returns>
-        public EntityTemplToInst StartCreateEntity(EntityTempl entityTempl)
+        public EntityTemplToInst CreateEntity(EntityTempl entityTempl)
         {
             //List<PropTemplRuleActionBase> listAction = new List<PropTemplRuleActionBase>();
-            return StartCreateEntity(entityTempl, _reposit.Finder.GetRootFolder()); //,listAction);
+            return CreateEntity(entityTempl, _reposit.Finder.GetRootFolder()); //,listAction);
         }
 
-        //public EntityTemplToInst StartCreateEntity(EntityTempl entityTempl, PropTemplRuleActionBase action)
-        //{
-        //    List<PropTemplRuleActionBase> listAction = new List<PropTemplRuleActionBase>();
-        //    listAction.Add(action);
-        //    return StartCreateEntity(entityTempl, _reposit.Finder.GetRootFolder(), listAction);
-        //}
-
-        /// <summary>
-        /// Start create/instanciate an entity from a template, under a folder parent.
-        /// </summary>
-        /// <param name="entityTempl"></param>
-        /// <param name="folderParent"></param>
-        /// <returns></returns>
-        //public EntityTemplToInst StartCreateEntity(EntityTempl entityTempl, Folder folderParent, List<PropTemplRuleActionBase> listAction)
-        //{
-        //    // parent folder is null? its the root
-        //    if (folderParent == null)
-        //    {
-        //        folderParent = _reposit.Finder.GetRootFolder();
-        //    }
-
-        //    // create the object managing the process
-        //    EntityTemplToInst templToInst = new EntityTemplToInst();
-        //    templToInst.EntityTempl = entityTempl;
-        //    templToInst.FolderParent = folderParent;
-
-        //    // check the consistency of the entity template
-        //    if (CheckConsistencyEntityTempl(entityTempl) > 0)
-        //    {
-        //        templToInst.SetNextStep(TemplToInstStep.Ends);
-        //        templToInst.SetState(TemplToInstState.Failed);
-
-        //        // set the problem type: Consistency 
-        //        // TODO:
-        //        return templToInst;
-        //    }
-
-
-        //    // create an entity, attach it under the parent
-        //    Entity entity = new Entity();
-        //    entity.ParentFolderId = folderParent.Id;
-        //    entity.SetCreatedFromTempl(entityTempl);
-        //    templToInst.Entity = entity;
-
-        //    // set a key to the property root, from the template
-        //    SetEntPropertyRootFromTempl(entityTempl, entity);
-
-        //    // set the key of the property root
-        //    //entity.PropertyRoot.Key
-        //    // TODO: pb avec propertyRoot, manque champs!! key, 
-
-        //    if (!_reposit.Builder.SaveEntity(entity))
-        //        return null;
-
-        //    // build properties of the entity, step by step, from the property root
-        //    List<PropTemplRuleBase> listRuleToExec = new List<PropTemplRuleBase>();
-        //    if(!CreatePropGroupFromTempl(entityTempl, entityTempl.PropertyRoot, entity, entity.PropertyRoot, listAction, listRuleToExec))
-        //    {
-        //        templToInst.SetNextStep(TemplToInstStep.Ends);
-        //        templToInst.SetState(TemplToInstState.Failed);
-
-        //        // set the problem type: error occurs on instantiating properties
-        //        // TODO:
-        //        return templToInst;
-        //    }
-
-            //-------
-        //    // no rule to execute, the creation of the entity is complete
-        //    if(listRuleToExec.Count>0)
-        //    {
-        //        // the creation of the entity needs some actions on rules
-        //        templToInst.SetNextStep(TemplToInstStep.NeedAction);
-        //        templToInst.SetState(TemplToInstState.InProgress);
-        //        // save rules
-        //        templToInst.SetNewListRule(listRuleToExec);
-        //        return templToInst;
-        //    }
-
-        //    // no rule to execute, the creation of the entity is complete
-        //    templToInst.SetNextStep(TemplToInstStep.Ends);
-        //    templToInst.SetState(TemplToInstState.Success);
-
-        //    // save it
-        //    if (!_reposit.Builder.UpdateEntity(entity))
-        //        return null;
-
-        //    folderParent.AddChild(entity);
-
-        //    // update the parent folder, has a new child
-        //    if (!_reposit.Builder.UpdateFolder(folderParent))
-        //        return null;
-
-        //    return templToInst;
-        //}
 
         /// <summary>
         /// Start create/instanciate an entity from a template, under a folder parent.
@@ -140,13 +46,11 @@ namespace Etagair.Core
         /// <param name="entityTempl"></param>
         /// <param name="folderParent"></param>
         /// <returns></returns>
-        public EntityTemplToInst StartCreateEntity(EntityTempl entityTempl, Folder folderParent)
+        public EntityTemplToInst CreateEntity(EntityTempl entityTempl, Folder folderParent)
         {
             // parent folder is null? its the root
             if (folderParent == null)
-            {
                 folderParent = _reposit.Finder.GetRootFolder();
-            }
 
             // create the object managing the process
             EntityTemplToInst templToInst = new EntityTemplToInst();
@@ -173,6 +77,10 @@ namespace Etagair.Core
             {
                 templToInst.SetNextStep(TemplToInstStep.Starts);
                 templToInst.SetState(TemplToInstState.InProgress);
+
+                // can complete the creation of the entity
+                CompleteCreateEntity(templToInst);
+
                 return templToInst;
             }
 
@@ -228,7 +136,7 @@ namespace Etagair.Core
         /// </summary>
         /// <param name="templToInst"></param>
         /// <returns></returns>
-        public bool CreateEntity(EntityTemplToInst templToInst)
+        public bool CompleteCreateEntity(EntityTemplToInst templToInst)
         {
             // check
             if (templToInst.NextStep != TemplToInstStep.Starts)
@@ -301,20 +209,20 @@ namespace Etagair.Core
         /// </summary>
         /// <param name="entityTemplToInst"></param>
         /// <returns></returns>
-        public bool ContinueCreateEntity(EntityTemplToInst templToInst)
-        {
-            // really need to continue?
-            if (templToInst.NextStep != TemplToInstStep.NeedAction)
-                return true;
+        //public bool ContinueCreateEntity(EntityTemplToInst templToInst)
+        //{
+        //    // really need to continue?
+        //    if (templToInst.NextStep != TemplToInstStep.NeedAction)
+        //        return true;
 
-            if(templToInst.State != TemplToInstState.InProgress)
-                return true;
+        //    if(templToInst.State != TemplToInstState.InProgress)
+        //        return true;
 
-            // TODO: non, plus utile!!
-            templToInst.SetNextStep(TemplToInstStep.Ends);
-            templToInst.SetState(TemplToInstState.Failed);
-            return false;
-        }
+        //    // TODO: non, plus utile!!
+        //    templToInst.SetNextStep(TemplToInstStep.Ends);
+        //    templToInst.SetState(TemplToInstState.Failed);
+        //    return false;
+        //}
 
         #endregion
 
