@@ -82,6 +82,6 @@ The last version is 0.0.3-alpha.
 
 The web site: https://www.nuget.org/packages/Etagair/
 
-The last release: https://www.nuget.org/packages/Etagair/0.0.3-alpha
+The last release: https://www.nuget.org/packages/Etagair/0.0.4-alpha
 
 
