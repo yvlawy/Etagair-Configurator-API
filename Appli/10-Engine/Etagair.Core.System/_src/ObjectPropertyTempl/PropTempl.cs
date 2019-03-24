@@ -10,7 +10,9 @@ namespace Etagair.Core.System
     /// </summary>
     public class PropTempl : PropTemplBase
     {
-        public PropValueTemplBase Value { get; set; }
+
+        //public PropValueTemplBase Value { get; set; }
+        public IValue Value { get; set; }
 
         /// <summary>
         /// Set the key and the value.
@@ -18,7 +20,12 @@ namespace Etagair.Core.System
         /// </summary>
         /// <param name="key"></param>
         /// <param name="value"></param>
-        public void SetKeyValue(PropKeyTemplBase key, PropValueTemplBase value)
+        //public void SetKeyValue(PropKeyTemplBase key, PropValueTemplBase value)
+        //{
+        //    Key = key;
+        //    Value = value;
+        //}
+        public void SetKeyValue(PropKeyTemplBase key, IValue value)
         {
             Key = key;
             Value = value;

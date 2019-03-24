@@ -195,13 +195,13 @@ namespace Etagair.Core
                 if (rule.Type == PropTemplRuleType.PropValueToSet)
                 {
                     // the property template value must be null!
-                    if (!propTempl.Value.IsNull)
+                    if (!(propTempl.Value==null))
                         pbCount++;
                 }
             }
 
             // check: no rule to execute and the prop value is null-> error!
-            if(listRuleToExec.Count==0 && propTempl.Value.IsNull)
+            if(listRuleToExec.Count==0 && propTempl.Value== null)
                 // todo:check the type of rule for tis case?? PropValueSetOnInstance
                 pbCount++;
 
@@ -237,8 +237,8 @@ namespace Etagair.Core
                 PropertyKeyBase propKey = _processEntPropTemplRules.CreatePropKeyFromTempl(propTempl);
 
                 // create the value by copy from the template
-                PropertyValueBase propValue = _processEntPropTemplRules.CreatePropValueFromTempl(propTempl.Value);
-
+                //PropertyValueBase propValue = ValueTool.CloneValue(propTempl.Value);
+                IValue propValue= ValueTool.CloneValue(propTempl.Value);
                 Property property = new Property();
                 property.PropGroupParentId = propGroupParent.Id;
                 property.SetKeyValue(propKey, propValue);

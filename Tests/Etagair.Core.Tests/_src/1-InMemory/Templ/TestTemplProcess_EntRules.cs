@@ -81,9 +81,10 @@ namespace Etagair.Core.Tests.TestTempl
             Assert.AreEqual("Name", propKeyString.Key, "the prop value should be Name");
 
             //----check the prop value 
-            PropertyValueString propValueValue = prop.Value as PropertyValueString;
-            Assert.IsNotNull(propValueValue, "the prop key string Typeshould exists");
-            Assert.AreEqual("Toshiba", propValueValue.Value, "the prop value should be Toshiba");
+            //PropertyValueString propValueValue = prop.Value as PropertyValueString;
+            ValString propValueString = prop.Value as ValString;
+            Assert.IsNotNull(propValueString, "the prop key string Typeshould exists");
+            Assert.AreEqual("Toshiba", propValueString.Value, "the prop value should be Toshiba");
         }
 
         /// <summary>
@@ -152,7 +153,8 @@ namespace Etagair.Core.Tests.TestTempl
             Assert.AreEqual(tcKeyName.Id, propKeyTextCode.TextCodeId, "the prop value should be the textCode id of the text Name");
 
             //----check the prop value 
-            PropertyValueTextCode propValueTextCode = prop.Value as PropertyValueTextCode;
+            //PropertyValueTextCode propValueTextCode = prop.Value as PropertyValueTextCode;
+            ValTextCodeId propValueTextCode = prop.Value as ValTextCodeId;
             Assert.IsNotNull(propValueTextCode, "the prop key string Typeshould exists");
             Assert.AreEqual(tcNameValToshiba.Id, propValueTextCode.TextCodeId, "the prop value should be the textCode id of text Toshiba");
         }

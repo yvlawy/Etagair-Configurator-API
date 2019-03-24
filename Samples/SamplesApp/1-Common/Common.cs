@@ -154,15 +154,15 @@ namespace SamplesApp
             return propKeyText;
         }
 
-        private string GetPropValueText(EtagairEngine engine, PropertyValueBase propertyValueBase)
+        private string GetPropValueText(EtagairEngine engine, IValue value)
         {
-            PropertyValueString propValueString = propertyValueBase as PropertyValueString;
+            ValString propValueString = value as ValString;
             if (propValueString != null)
             {
                 return "\""+ propValueString.Value + "\"";
             }
 
-            PropertyValueTextCode propValueTextCode = propertyValueBase as PropertyValueTextCode;
+            ValTextCodeId propValueTextCode = value as ValTextCodeId;
             string propKeyText = "\""+ "tc/" + engine.Searcher.FindTextCodeById(propValueTextCode.TextCodeId).Code+ "\"";
 
             return propKeyText;

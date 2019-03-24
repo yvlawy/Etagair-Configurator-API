@@ -395,9 +395,13 @@ namespace Etagair.Core
             PropertyKeyTextCode propertyKey = new PropertyKeyTextCode();
             propertyKey.TextCodeId = tcKey.Id;
 
-            PropertyValueTextCode propertyValue = new PropertyValueTextCode();
-            propertyValue.TextCodeId = tcValue.Id;
-            property.SetKeyValue(propertyKey, propertyValue);
+            // create the property value
+            //PropertyValueTextCode propertyValue = new PropertyValueTextCode();
+            //propertyValue.TextCodeId = tcValue.Id;
+            //property.SetKeyValue(propertyKey, propertyValue);
+            ValTextCodeId valTextCodeId = new ValTextCodeId();
+            valTextCodeId.TextCodeId= tcValue.Id;
+            property.SetKeyValue(propertyKey, valTextCodeId);
 
             // add the property under the root properties
             entity.AddProperty(propertyParent, property);
@@ -446,9 +450,12 @@ namespace Etagair.Core
             PropertyKeyString propertyKey = new PropertyKeyString();
             propertyKey.Key = key;
 
-            PropertyValueTextCode propertyValue = new PropertyValueTextCode();
-            propertyValue.TextCodeId = tcValue.Id;
-            property.SetKeyValue(propertyKey, propertyValue);
+            //PropertyValueTextCode propertyValue = new PropertyValueTextCode();
+            //propertyValue.TextCodeId = tcValue.Id;
+            //property.SetKeyValue(propertyKey, propertyValue);
+            ValTextCodeId valTextCodeId = new ValTextCodeId();
+            valTextCodeId.TextCodeId = tcValue.Id;
+            property.SetKeyValue(propertyKey, valTextCodeId);
 
             // add the property under the root properties
             entity.AddProperty(propertyParent, property);
@@ -504,9 +511,12 @@ namespace Etagair.Core
             PropertyKeyString propertyKey = new PropertyKeyString();
             propertyKey.Key = key;
 
-            PropertyValueString propertyValue = new PropertyValueString();
-            propertyValue.Value = value;
-            property.SetKeyValue(propertyKey, propertyValue);
+            //PropertyValueString propertyValue = new PropertyValueString();
+            //propertyValue.Value = value;
+            //property.SetKeyValue(propertyKey, propertyValue);
+            ValString valString = new ValString();
+            valString.Value= value;
+            property.SetKeyValue(propertyKey, valString);
 
             // add the property under the root properties
             propertyParent.AddProperty(property);
@@ -570,9 +580,12 @@ namespace Etagair.Core
             PropertyKeyTextCode propertyKey = new PropertyKeyTextCode();
             propertyKey.TextCodeId = tcKey.Id;
 
-            PropertyValueString propertyValue = new PropertyValueString();
-            propertyValue.Value = value;
-            property.SetKeyValue(propertyKey, propertyValue);
+            //PropertyValueString propertyValue = new PropertyValueString();
+            //propertyValue.Value = value;
+            //property.SetKeyValue(propertyKey, propertyValue);
+            ValString valString = new ValString();
+            valString.Value = value;
+            property.SetKeyValue(propertyKey, valString);
 
             // add the property under the root properties
             entity.AddProperty(propertyParent, property);

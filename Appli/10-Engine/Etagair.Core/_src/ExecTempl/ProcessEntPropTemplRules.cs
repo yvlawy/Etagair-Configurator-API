@@ -79,26 +79,27 @@ namespace Etagair.Core
             throw new Exception("Property Key templ not yet implemented!");
         }
 
-        public PropertyValueBase CreatePropValueFromTempl(PropValueTemplBase propTemplValue)
-        {
-            PropValueTemplString propValueTemplString = propTemplValue as PropValueTemplString;
-            if (propValueTemplString != null)
-            {
-                PropertyValueString propValueString = new PropertyValueString();
-                propValueString.Value = propValueTemplString.Value;
-                return propValueString;
-            }
+        //public IValue CreatePropValueFromTempl(IValue propTemplValue)
+        //{
+        //    ici();
+        //    PropValueTemplString propValueTemplString = propTemplValue as PropValueTemplString;
+        //    if (propValueTemplString != null)
+        //    {
+        //        PropertyValueString propValueString = new PropertyValueString();
+        //        propValueString.Value = propValueTemplString.Value;
+        //        return propValueString;
+        //    }
 
-            PropValueTemplTextCode propValueTemplTextCode = propTemplValue as PropValueTemplTextCode;
-            if (propValueTemplTextCode != null)
-            {
-                PropertyValueTextCode propValueTextCode = new PropertyValueTextCode();
-                propValueTextCode.TextCodeId = propValueTemplTextCode.TextCodeId;
-                return propValueTextCode;
-            }
+        //    PropValueTemplTextCode propValueTemplTextCode = propTemplValue as PropValueTemplTextCode;
+        //    if (propValueTemplTextCode != null)
+        //    {
+        //        PropertyValueTextCode propValueTextCode = new PropertyValueTextCode();
+        //        propValueTextCode.TextCodeId = propValueTemplTextCode.TextCodeId;
+        //        return propValueTextCode;
+        //    }
 
-            throw new Exception("property Value type not yet implemented!");
-        }
+        //    throw new Exception("property Value type not yet implemented!");
+        //}
 
         #region Private methods
 
@@ -145,10 +146,11 @@ namespace Etagair.Core
             //propTempl.MoveRuleToExecuted(ruleValueSetOnInst);
 
             // execute the action: create the prop Value 
-            PropertyValueBase propValue = CreatePropValueFromAction(actionSetOnInst, ruleValueSetOnInst);
+            //PropertyValueBase propValue = CreatePropValueFromAction(actionSetOnInst, ruleValueSetOnInst);
+            IValue value = CreatePropValueFromAction(actionSetOnInst, ruleValueSetOnInst);
 
             // set the prop value, the key is set before
-            property.SetValue(propValue);
+            property.SetValue(value);
             return true;
         }
 
@@ -158,20 +160,27 @@ namespace Etagair.Core
         /// <param name="actionSetOnInst"></param>
         /// <param name="ruleValueSetOnInst"></param>
         /// <returns></returns>
-        private PropertyValueBase  CreatePropValueFromAction(PropTemplRuleActionValueToSet  actionSetOnInst, PropTemplRuleValueToSet ruleValueSetOnInst)
+        //private PropertyValueBase CreatePropValueFromAction(PropTemplRuleActionValueToSet actionSetOnInst, PropTemplRuleValueToSet ruleValueSetOnInst)
+        private IValue CreatePropValueFromAction(PropTemplRuleActionValueToSet  actionSetOnInst, PropTemplRuleValueToSet ruleValueSetOnInst)
         {
             if (ruleValueSetOnInst.ValueType == PropValueType.String)
             {
-                PropertyValueString propValueString = new PropertyValueString();
-                propValueString.Value = actionSetOnInst.ValueString;
-                return propValueString;
+                //PropertyValueString propValueString = new PropertyValueString();
+                //propValueString.Value = actionSetOnInst.ValueString;
+                // return propValueString;
+                ValString valString = new ValString();
+                valString.Value = actionSetOnInst.ValueString;
+                return valString;
             }
 
             if (ruleValueSetOnInst.ValueType == PropValueType.TextCode)
             {
-                PropertyValueTextCode propValueTextCode = new PropertyValueTextCode();
-                propValueTextCode.TextCodeId = actionSetOnInst.ValueTextCodeId;
-                return propValueTextCode;
+                //PropertyValueTextCode propValueTextCode = new PropertyValueTextCode();
+                //propValueTextCode.TextCodeId = actionSetOnInst.ValueTextCodeId;
+                //return propValueTextCode;
+                ValTextCodeId valTextCodeId = new ValTextCodeId();
+                valTextCodeId.TextCodeId = actionSetOnInst.ValueTextCodeId;
+                return valTextCodeId;
             }
 
             throw new Exception("property Value type not yet implemented!");

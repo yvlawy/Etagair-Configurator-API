@@ -199,11 +199,11 @@ namespace Etagair.Core
             PropKeyTemplString propKeyString = new PropKeyTemplString();
             propKeyString.Key= key;
 
-            PropValueTemplString propValueString = new PropValueTemplString();
-            propValueString.Value = value;
-
-            return CreatePropTempl(entityTempl, propertyParent, propKeyString, propValueString);
-
+            //PropValueTemplString propValueString = new PropValueTemplString();
+            //propValueString.Value = value;
+            ValString valString = new ValString();
+            valString.Value = value;
+            return CreatePropTempl(entityTempl, propertyParent, propKeyString, valString);
         }
 
         /// <summary>
@@ -260,14 +260,18 @@ namespace Etagair.Core
             PropKeyTemplTextCode propKeyTextCode = new PropKeyTemplTextCode();
             propKeyTextCode.TextCodeId = tcKey.Id;
 
-            PropValueTemplTextCode propValueTextCode = null;
+            //PropValueTemplTextCode propValueTextCode = null;
+            //propValueTextCode = new PropValueTemplTextCode();
+            //if (tcValue != null)
+                // can be null (to set on instantiation)
+                //propValueTextCode.TextCodeId = tcValue.Id;
 
-            propValueTextCode = new PropValueTemplTextCode();
+            ValTextCodeId valTextCodeId = new ValTextCodeId();
             if (tcValue != null)
                 // can be null (to set on instantiation)
-                propValueTextCode.TextCodeId = tcValue.Id;
+                valTextCodeId.TextCodeId = tcValue.Id;
 
-            return CreatePropTempl(entityTempl, propertyParent, propKeyTextCode, propValueTextCode);
+            return CreatePropTempl(entityTempl, propertyParent, propKeyTextCode, valTextCodeId);
         }
 
         public PropTempl CreatePropTempl(EntityTempl entityTempl, PropGroupTempl propertyParent, TextCode tcKey, string value)
@@ -278,12 +282,15 @@ namespace Etagair.Core
 
             PropKeyTemplTextCode propKeyTextCode= new PropKeyTemplTextCode();
             propKeyTextCode.TextCodeId = tcKey.Id;
-            PropValueTemplString propValueString= new PropValueTemplString();
-            propValueString.Value = value;
-            return CreatePropTempl(entityTempl, propertyParent, propKeyTextCode, propValueString);
+
+            //PropValueTemplString propValueString= new PropValueTemplString();
+            //propValueString.Value = value;
+            ValString valueString = new ValString();
+            valueString.Value = value;
+            return CreatePropTempl(entityTempl, propertyParent, propKeyTextCode, valueString);
         }
 
-        public PropTempl CreatePropTempl(EntityTempl entityTempl, PropGroupTempl propGroupTemplParent, PropKeyTemplBase propKey, PropValueTemplBase propValue)
+        public PropTempl CreatePropTempl(EntityTempl entityTempl, PropGroupTempl propGroupTemplParent, PropKeyTemplBase propKey, IValue propValue)
         {
             // check the entity parent
             if (entityTempl == null)

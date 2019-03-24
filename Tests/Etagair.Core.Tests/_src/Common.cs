@@ -115,17 +115,17 @@ namespace Etagair.Core.Tests
         /// </summary>
         /// <param name="propertyKeyBase"></param>
         /// <returns></returns>
-        public static string GetPropertyValueContent(PropertyValueBase propertyValueBase)
+        public static string GetPropertyValueContent(IValue value)
         {
-            PropertyValueString propValueString = propertyValueBase as PropertyValueString;
+            ValString propValueString = value as ValString;
             if (propValueString != null)
                 return propValueString.Value;
 
-            PropertyValueTextCode propValueTextCode = propertyValueBase as PropertyValueTextCode;
+            ValTextCodeId propValueTextCode = value as ValTextCodeId;
             if (propValueTextCode != null)
                 return propValueTextCode.TextCodeId;
 
-            // TODO: implement others thpes: Image, ImageCode,...
+            // TODO: implement others types: Image, ImageCode,...
             return null;
         }
 

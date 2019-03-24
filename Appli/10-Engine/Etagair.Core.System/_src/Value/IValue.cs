@@ -5,9 +5,9 @@ using System.Text;
 namespace Etagair.Core.System
 {
     /// <summary>
-    /// TODO: to delete! now property has a IValue
+    /// Base of all values.
     /// </summary>
-    //public abstract class PropertyValueBase
-    //{
-    //}
+    public interface IValue
+    {
+    }
 }

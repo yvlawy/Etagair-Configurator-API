@@ -60,7 +60,8 @@ namespace Etagair.Core.Tests
             Assert.AreEqual("Name", propKeyString.Key, "the key should be 'Name'");
 
             // check the property value (type and value)
-            PropertyValueString propValueString = propName.Value as PropertyValueString;
+            //PropertyValueString propValueString = propName.Value as PropertyValueString;
+            ValString propValueString = propName.Value as ValString;
             Assert.IsNotNull(propValueString, "the value should be a string");
             Assert.AreEqual("Toshiba", propValueString.Value, "the key should be 'Toshiba'");
         }
@@ -92,7 +93,7 @@ namespace Etagair.Core.Tests
             Assert.AreEqual(tcName.Id, propKeyTextCode.TextCodeId, "the key should be 'Name'");
 
             // check the property value (type and value)
-            PropertyValueTextCode propValueTextCode = propName.Value as PropertyValueTextCode;
+            ValTextCodeId propValueTextCode = propName.Value as ValTextCodeId;
             Assert.IsNotNull(propValueTextCode, "the value should be a TextCode");
             Assert.AreEqual(tcToshiba.Id, propValueTextCode.TextCodeId, "the key should be 'Toshiba'");
         }

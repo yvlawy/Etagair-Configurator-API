@@ -4,8 +4,11 @@ using System.Text;
 
 namespace Etagair.Core.System
 {
-    public class PropertyValueTextCode: PropertyValueBase
-    {
-        public string TextCodeId { get; set; }
-    }
+    /// <summary>
+    /// TODO: to delete! now property has a IValue
+    /// </summary>
+    //public class PropertyValueTextCode: PropertyValueBase
+    //{
+    //    public string TextCodeId { get; set; }
+    //}
 }

@@ -10,9 +10,16 @@ namespace Etagair.Core.System
     /// </summary>
     public class Property: PropertyBase
     {
-        public PropertyValueBase Value { get; set; }
+        //public PropertyValueBase Value { get; set; }
+        public IValue Value { get; set; }
 
-        public void SetKeyValue(PropertyKeyBase key, PropertyValueBase value)
+        //public void SetKeyValue(PropertyKeyBase key, PropertyValueBase value)
+        //{
+        //    Key = key;
+        //    Value = value;
+        //}
+
+        public void SetKeyValue(PropertyKeyBase key, IValue value)
         {
             Key = key;
             Value = value;
@@ -23,7 +30,11 @@ namespace Etagair.Core.System
         /// The key is already set.
         /// </summary>
         /// <param name="value"></param>
-        public void SetValue(PropertyValueBase value)
+        //public void SetValue(PropertyValueBase value)
+        //{
+        //    Value = value;
+        //}
+        public void SetValue(IValue value)
         {
             Value = value;
         }

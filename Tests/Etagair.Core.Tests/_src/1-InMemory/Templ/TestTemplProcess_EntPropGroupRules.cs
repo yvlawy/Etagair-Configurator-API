@@ -97,7 +97,8 @@ namespace Etagair.Core.Tests.TestTempl
             Assert.AreEqual("Type", propKeyString.Key, "the key should be Type");
 
             // check the prop value
-            PropertyValueString propValueString = prop.Value as PropertyValueString;
+            //PropertyValueString propValueString = prop.Value as PropertyValueString;
+            ValString propValueString = prop.Value as ValString;
             Assert.IsNotNull(propValueString, "the prop key string Type should exists");
             Assert.AreEqual("Intel", propValueString.Value, "the value should be Intel");
 
