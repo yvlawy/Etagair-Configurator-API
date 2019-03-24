@@ -7,13 +7,18 @@ namespace Etagair.Core
 {
     public class ValueTool
     {
+        /// <summary>
+        /// Clone the value. Createan object on the same and copy the value content.
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
         public static IValue CloneValue(IValue value)
         {
             ValString valString = value as ValString;
             if (valString != null)
             {
                 ValString valStringRes = new ValString();
-                valStringRes.Value = valStringRes.Value;
+                valStringRes.Value = valString.Value;
                 return valStringRes;
             }
 

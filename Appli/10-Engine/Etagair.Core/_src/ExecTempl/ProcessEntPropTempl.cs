@@ -196,7 +196,12 @@ namespace Etagair.Core
                 {
                     // the property template value must be null!
                     if (!(propTempl.Value==null))
+                    {
+                        //ici();
+
+                        // TODO: voir selon le type!
                         pbCount++;
+                    }
                 }
             }
 

@@ -4,13 +4,13 @@ using System.Text;
 
 namespace Etagair.Core.System
 {
-    public abstract class PropValueTemplBase
-    {
-        public PropValueTemplBase()
-        {
-            IsNull = true;
-        }
+    //public abstract class PropValueTemplBase
+    //{
+    //    public PropValueTemplBase()
+    //    {
+    //        IsNull = true;
+    //    }
 
-        public bool IsNull { get; set; }
-    }
+    //    public bool IsNull { get; set; }
+    //}
 }

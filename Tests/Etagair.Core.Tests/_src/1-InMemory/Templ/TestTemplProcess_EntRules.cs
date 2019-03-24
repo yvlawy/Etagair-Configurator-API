@@ -47,7 +47,7 @@ namespace Etagair.Core.Tests.TestTempl
             core.EditorTempl.AddPropTemplRule(templComputer, propTempl, rule);
 
             // provide an action to the rule (to execute it automatically): Property value set on instantiation
-            PropTemplRuleActionValueToSet  action = new PropTemplRuleActionValueToSet ();
+            PropTemplRuleActionValueToSet  action = new PropTemplRuleActionValueToSet();
             action.SetRule(rule);
             action.SetValueString("Toshiba");
 
