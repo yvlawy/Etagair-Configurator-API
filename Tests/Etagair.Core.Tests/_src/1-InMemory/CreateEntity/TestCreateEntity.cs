@@ -20,7 +20,7 @@ namespace Etagair.Core.Tests
         /// Create one empty entity under the root.
         /// </summary>
         [TestMethod]
-        public void CreateEntityUnderRoot()
+        public void CreateEntity()
         {
             EtagairCore core = Common.CreateCore(RepositConfig);
 
@@ -36,45 +36,15 @@ namespace Etagair.Core.Tests
             Assert.AreEqual(true, toshibaCoreI7.BuildFinished, "BuildFinished should be true");
         }
 
-
-        /// <summary>
-        ///  
-        /// $$$Root\
-        ///    E: "Name"= "Toshiba"   
-        ///     
-        /// </summary>
-        [TestMethod]
-        public void CreateEntityUnderRoot_Prop_KeyString_ValString()
-        {
-            EtagairCore core = Common.CreateCore(RepositConfig);
-
-            // create an ent
-            Entity toshibaCoreI7 = core.Editor.CreateEntity();
-
-            // Add a property to an object: key - value
-            Property propName= core.Editor.CreateProperty(toshibaCoreI7, "Name", "Toshiba");
-
-            // check the property key (type and value)
-            PropertyKeyString propKeyString = propName.Key as PropertyKeyString;
-            Assert.IsNotNull(propKeyString, "the key should be a string");
-            Assert.AreEqual("Name", propKeyString.Key, "the key should be 'Name'");
-
-            // check the property value (type and value)
-            //PropertyValueString propValueString = propName.Value as PropertyValueString;
-            ValString propValueString = propName.Value as ValString;
-            Assert.IsNotNull(propValueString, "the value should be a string");
-            Assert.AreEqual("Toshiba", propValueString.Value, "the key should be 'Toshiba'");
-        }
-
         /// <summary>
         /// create a property, the key and the value are textCode.
         /// 
-        /// $$$Root\
-        ///    E: tc:"Name"= tc:"Toshiba"
+        /// ----Data:
+        ///   E: tc:"Name"= tc:"Toshiba"
         ///     
         /// </summary>
         [TestMethod]
-        public void CreateEntityUnderRoot_Prop_KeyTextCode_ValTextCode()
+        public void CreateEntity_Prop_KeyTextCode_ValTextCode()
         {
             EtagairCore core = Common.CreateCore(RepositConfig);
 
@@ -98,11 +68,133 @@ namespace Etagair.Core.Tests
             Assert.AreEqual(tcToshiba.Id, propValueTextCode.TextCodeId, "the key should be 'Toshiba'");
         }
 
+
         /// <summary>
         ///  
-        /// $$$Root\
-        ///     computers\
-        ///         E: "Name"= "Toshiba"   
+        ///  E: "Name"= "Toshiba"   
+        ///     
+        /// </summary>
+        [TestMethod]
+        public void CreateEntity_Prop_KeyString_ValString()
+        {
+            EtagairCore core = Common.CreateCore(RepositConfig);
+
+            // create an ent
+            Entity toshibaCoreI7 = core.Editor.CreateEntity();
+
+            // Add a property to an object: key - value
+            Property propName= core.Editor.CreateProperty(toshibaCoreI7, "Name", "Toshiba");
+
+            // check the property key (type and value)
+            PropertyKeyString propKeyString = propName.Key as PropertyKeyString;
+            Assert.IsNotNull(propKeyString, "the key should be a string");
+            Assert.AreEqual("Name", propKeyString.Key, "the key should be 'Name'");
+
+            // check the property value (type and value)
+            //PropertyValueString propValueString = propName.Value as PropertyValueString;
+            ValString propValueString = propName.Value as ValString;
+            Assert.IsNotNull(propValueString, "the value should be a string");
+            Assert.AreEqual("Toshiba", propValueString.Value, "the key should be 'Toshiba'");
+        }
+
+
+        /// <summary>
+        /// create a property, the key and the value are textCode.
+        /// 
+        /// ----Data:
+        ///   E: tc:"Power" =  12.0
+        ///     
+        /// </summary>
+        [TestMethod]
+        public void CreateEntity_Prop_KeyTextCode_ValDouble()
+        {
+            EtagairCore core = Common.CreateCore(RepositConfig);
+
+            TextCode tcName = core.Editor.CreateTextCode("Power");
+
+            // create an ent
+            Entity toshibaCoreI7 = core.Editor.CreateEntity();
+
+            // Add a property to an object: key - value
+            Property propName = core.Editor.CreateProperty(toshibaCoreI7, tcName, 12.0);
+
+            // check the property key (type and value)
+            PropertyKeyTextCode propKeyTextCode = propName.Key as PropertyKeyTextCode;
+            Assert.IsNotNull(propKeyTextCode, "the key should be a TextCode");
+            Assert.AreEqual(tcName.Id, propKeyTextCode.TextCodeId, "the key should be 'Name'");
+
+            // check the property value (type and value)
+            ValDouble propValueDouble = propName.Value as ValDouble;
+            Assert.IsNotNull(propValueDouble, "the value should be a double");
+            Assert.AreEqual(12, propValueDouble.Value, "the value should be 12.0");
+        }
+
+        /// <summary>
+        /// create a property, the key and the value are textCode.
+        /// 
+        /// ----Data:
+        ///   E: tc:"Level" =  15
+        ///     
+        /// </summary>
+        [TestMethod]
+        public void CreateEntity_Prop_KeyTextCode_ValInt()
+        {
+            EtagairCore core = Common.CreateCore(RepositConfig);
+
+            TextCode tcName = core.Editor.CreateTextCode("Level");
+
+            // create an ent
+            Entity toshibaCoreI7 = core.Editor.CreateEntity();
+
+            // Add a property to an object: key - value
+            Property propName = core.Editor.CreateProperty(toshibaCoreI7, tcName, 15);
+
+            // check the property key (type and value)
+            PropertyKeyTextCode propKeyTextCode = propName.Key as PropertyKeyTextCode;
+            Assert.IsNotNull(propKeyTextCode, "the key should be a TextCode");
+            Assert.AreEqual(tcName.Id, propKeyTextCode.TextCodeId, "the key should be 'Name'");
+
+            // check the property value (type and value)
+            ValInt propValueInt = propName.Value as ValInt;
+            Assert.IsNotNull(propValueInt, "the value should be an int");
+            Assert.AreEqual(15, propValueInt.Value, "the value should be 15");
+        }
+
+        /// <summary>
+        /// create a property, the key and the value are textCode.
+        /// 
+        /// ----Data:
+        ///   E: tc:"On" =  true
+        ///     
+        /// </summary>
+        [TestMethod]
+        public void CreateEntity_Prop_KeyTextCode_ValBool()
+        {
+            EtagairCore core = Common.CreateCore(RepositConfig);
+
+            TextCode tcName = core.Editor.CreateTextCode("On");
+
+            // create an ent
+            Entity toshibaCoreI7 = core.Editor.CreateEntity();
+
+            // Add a property to an object: key - value
+            Property propName = core.Editor.CreateProperty(toshibaCoreI7, tcName, true);
+
+            // check the property key (type and value)
+            PropertyKeyTextCode propKeyTextCode = propName.Key as PropertyKeyTextCode;
+            Assert.IsNotNull(propKeyTextCode, "the key should be a TextCode");
+            Assert.AreEqual(tcName.Id, propKeyTextCode.TextCodeId, "the key should be 'Name'");
+
+            // check the property value (type and value)
+            ValBool propValueBool = propName.Value as ValBool;
+            Assert.IsNotNull(propValueBool, "the value should be a bool");
+            Assert.AreEqual(true, propValueBool.Value, "the value should be 15");
+        }
+
+        /// <summary>
+        ///  
+        /// F: computers\
+        ///   E: "Name"= "Toshiba"   
         ///     
         /// </summary>
         [TestMethod]

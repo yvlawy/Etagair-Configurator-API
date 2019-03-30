@@ -47,7 +47,7 @@ namespace Etagair.Core.Tests
 
             // create prop childs into the prop group
             core.Editor.CreateProperty(toshibaCoreI7, propGrpProc, "Constructor", "Intel");
-            Assert.AreEqual(1, propGrpProc.ListProperty.Count, "The prop group should have 2 prop childs");
+            Assert.AreEqual(1, propGrpProc.ListProperty.Count, "The prop group should have one prop childs");
             Property propContructorIntel = propGrpProc.ListProperty[0] as Property;
             Assert.AreEqual("Constructor", Common.GetPropertyKeyContent(propContructorIntel.Key), "the prop child key should be: Constructor");
             Assert.AreEqual("Intel", Common.GetPropertyValueContent(propContructorIntel.Value), "the prop child key should be: Constructor");

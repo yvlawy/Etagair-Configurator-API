@@ -31,15 +31,20 @@ namespace Etagair.Core.System
             BuildFinished = false;
         }
 
-        // add the property under the root properties
+        /// <summary>
+        /// Add the property under the property parent.
+        /// </summary>
+        /// <param name="propertyParent"></param>
+        /// <param name="property"></param>
+        /// <returns></returns>
         public bool AddProperty(PropertyGroup propertyParent, PropertyBase property)
         {
             if (propertyParent == null)
             {
-                PropertyRoot.AddProperty(property);
+                propertyParent.AddProperty(property);
                 return true;
             }
-            PropertyRoot.AddProperty(property);
+            propertyParent.AddProperty(property);
             return true;
         }
 
