@@ -53,7 +53,7 @@ namespace Etagair.Core.Tests.TestTempl
             Assert.AreEqual("Type", propKeyString.Key, "the key should be 'Type'");
 
             // check the property value (type and value)
-            ValString propValueString = propTempl.Value as ValString;
+            ValString propValueString = propTempl.PropValueTempl.Value as ValString;
             Assert.IsNotNull(propValueString, "the value should be a string");
             Assert.AreEqual("Computer", propValueString.Value, "the key should be 'Computer'");
         }

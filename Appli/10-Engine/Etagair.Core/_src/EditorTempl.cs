@@ -199,11 +199,10 @@ namespace Etagair.Core
             PropKeyTemplString propKeyString = new PropKeyTemplString();
             propKeyString.Key= key;
 
-            //PropValueTemplString propValueString = new PropValueTemplString();
-            //propValueString.Value = value;
-            ValString valString = new ValString();
-            valString.Value = value;
-            return CreatePropTempl(entityTempl, propertyParent, propKeyString, valString);
+            // create the property value template, can be null
+            PropValueTempl propValue = PropValueTemplTool.CreatePropValueTemplFromValue(value);
+
+            return CreatePropTempl(entityTempl, propertyParent, propKeyString, propValue);
         }
 
         /// <summary>
@@ -266,12 +265,17 @@ namespace Etagair.Core
                 // can be null (to set on instantiation)
                 //propValueTextCode.TextCodeId = tcValue.Id;
 
-            ValTextCodeId valTextCodeId = new ValTextCodeId();
+            ValTextCodeId valTextCodeId = null;
             if (tcValue != null)
+            {
+                valTextCodeId = new ValTextCodeId();
                 // can be null (to set on instantiation)
                 valTextCodeId.TextCodeId = tcValue.Id;
+            }
 
-            return CreatePropTempl(entityTempl, propertyParent, propKeyTextCode, valTextCodeId);
+            PropValueTempl propValue = PropValueTemplTool.CreatePropValueTemplFromValue(valTextCodeId);
+
+            return CreatePropTempl(entityTempl, propertyParent, propKeyTextCode, propValue);
         }
 
         public PropTempl CreatePropTempl(EntityTempl entityTempl, PropGroupTempl propertyParent, TextCode tcKey, string value)
@@ -283,14 +287,12 @@ namespace Etagair.Core
             PropKeyTemplTextCode propKeyTextCode= new PropKeyTemplTextCode();
             propKeyTextCode.TextCodeId = tcKey.Id;
 
-            //PropValueTemplString propValueString= new PropValueTemplString();
-            //propValueString.Value = value;
-            ValString valueString = new ValString();
-            valueString.Value = value;
-            return CreatePropTempl(entityTempl, propertyParent, propKeyTextCode, valueString);
+            // create the property value template
+            PropValueTempl propValue = PropValueTemplTool.CreatePropValueTemplFromValue(value);
+            return CreatePropTempl(entityTempl, propertyParent, propKeyTextCode, propValue);
         }
 
-        public PropTempl CreatePropTempl(EntityTempl entityTempl, PropGroupTempl propGroupTemplParent, PropKeyTemplBase propKey, IValue propValue)
+        public PropTempl CreatePropTempl(EntityTempl entityTempl, PropGroupTempl propGroupTemplParent, PropKeyTemplBase propKey, PropValueTempl propValue)
         {
             // check the entity parent
             if (entityTempl == null)

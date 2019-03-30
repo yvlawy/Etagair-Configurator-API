@@ -1,10 +1,12 @@
-﻿using Etagair.Core.System;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Etagair.Core
+namespace Etagair.Core.System
 {
+    /// <summary>
+    /// Low-level value tool.
+    /// </summary>
     public class ValueTool
     {
         /// <summary>
@@ -14,6 +16,9 @@ namespace Etagair.Core
         /// <returns></returns>
         public static IValue CloneValue(IValue value)
         {
+            if (value == null)
+                return null;
+
             ValString valString = value as ValString;
             if (valString != null)
             {
@@ -42,5 +47,37 @@ namespace Etagair.Core
             throw new Exception("Value type not yet implemented!");
         }
 
+        public static IValue CreateValueFromTempl(PropValueTempl propValueTempl)
+        {
+            return CloneValue(propValueTempl.Value);
+        }
+
+        public static bool ValueMemberIsNull(IValue value)
+        {
+            ValString valString = value as ValString;
+            if (valString != null)
+            {
+                if (valString.Value == null)
+                    return true;
+                return false;
+            }
+
+            ValDouble valDouble = value as ValDouble;
+            if (valDouble != null)
+            {
+                return true;
+            }
+
+            ValTextCodeId valTextCodeId = value as ValTextCodeId;
+            if (valTextCodeId != null)
+            {
+                if(valTextCodeId.TextCodeId== null)
+                    return true;
+                return false;
+            }
+
+            // TODO: others types: int, bool, ImageCode,...
+            throw new Exception("Value type not yet implemented!");
+        }
     }
 }
