@@ -28,6 +28,7 @@ namespace SamplesApp
             Console.WriteLine("  E: ");
             Console.WriteLine("  \"Name\"= \"Toshiba Satellite Core I7\"");
             Console.WriteLine("  \"Trademark\" = \"Toshiba\"");
+            Console.WriteLine("  \"Year\" = 2019");
 
             // create a folder, under the root
             Folder foldComputers = engine.Editor.CreateFolder(null, "computers");
@@ -38,6 +39,7 @@ namespace SamplesApp
             // Add 2 properties to the entity (key - value)
             engine.Editor.CreateProperty(toshibaCoreI7, "Name", "Toshiba Satellite Core I7");
             engine.Editor.CreateProperty(toshibaCoreI7, "Trademark", "Toshiba");
+            //engine.Editor.CreateProperty(toshibaCoreI7, "Year", 2019);
         }
 
         /// <summary>
