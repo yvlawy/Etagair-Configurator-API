@@ -41,28 +41,9 @@ namespace Etagair.Core
 
         #endregion
 
-
         #region Public Create property methods.
-        /// <summary>
-        /// Add a property to an object: key - value, 
-        /// under the root group properties.
-        /// both are textCode (will be displayed translated depending on the language).
-        /// </summary>
-        /// <param name="entity"></param>
-        /// <param name="tcKey"></param>
-        /// <param name="tcValue"></param>
-        /// <returns></returns>
-        public Property CreateProperty(Entity entity, TextCode tcKey, TextCode tcValue)
-        {
-            // check the entity parent
-            if (entity == null)
-                return null;
 
-            // get the root group properties of the entity
-            PropertyGroup propertyParent = entity.PropertyRoot;
-
-            return CreateProperty(entity, propertyParent, tcKey, tcValue);
-        }
+        //====key is a string
 
         public Property CreateProperty(Entity entity, string key, TextCode tcValue)
         {
@@ -86,6 +67,141 @@ namespace Etagair.Core
             PropertyGroup propertyParent = entity.PropertyRoot;
 
             return CreateProperty(entity, propertyParent, key, value);
+        }
+
+        public Property CreateProperty(Entity entity, string key, double value)
+        {
+            // check the entity parent
+            if (entity == null)
+                return null;
+
+            // get the root group properties of the entity
+            PropertyGroup propertyParent = entity.PropertyRoot;
+
+            return CreateProperty(entity, propertyParent, key, value);
+        }
+
+        public Property CreateProperty(Entity entity, string key, int value)
+        {
+            // check the entity parent
+            if (entity == null)
+                return null;
+
+            // get the root group properties of the entity
+            PropertyGroup propertyParent = entity.PropertyRoot;
+
+            return CreateProperty(entity, propertyParent, key, value);
+        }
+
+        public Property CreateProperty(Entity entity, string key, bool value)
+        {
+            // check the entity parent
+            if (entity == null)
+                return null;
+
+            // get the root group properties of the entity
+            PropertyGroup propertyParent = entity.PropertyRoot;
+
+            return CreateProperty(entity, propertyParent, key, value);
+        }
+
+        public Property CreateProperty(Entity entity, PropertyGroup propertyParent, string key, TextCode tcValue)
+        {
+            // create the property value
+            ValTextCodeId valTextCode = new ValTextCodeId();
+            valTextCode.TextCodeId = tcValue.Id;
+
+            return CreateProperty(entity, propertyParent, key, valTextCode);
+        }
+
+        /// <summary>
+        /// Create a property (key-value) undeer a property group in an entity.
+        /// </summary>
+        /// <param name="entity"></param>
+        /// <param name="propertyParent"></param>
+        /// <param name="key"></param>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public Property CreateProperty(Entity entity, PropertyGroup propertyParent, string key, string value)
+        {
+            // create the property value
+            ValString valString = new ValString();
+            valString.Value = value;
+
+            return CreateProperty(entity, propertyParent, key, valString);
+        }
+
+        /// <summary>
+        /// Create a property (key-value) undeer a property group in an entity.
+        /// </summary>
+        /// <param name="entity"></param>
+        /// <param name="propertyParent"></param>
+        /// <param name="key"></param>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public Property CreateProperty(Entity entity, PropertyGroup propertyParent, string key, double value)
+        {
+            // create the property value
+            ValDouble valDouble = new ValDouble();
+            valDouble.Value = value;
+
+            return CreateProperty(entity, propertyParent, key, valDouble);
+        }
+
+        /// <summary>
+        /// Create a property (key-value) undeer a property group in an entity.
+        /// </summary>
+        /// <param name="entity"></param>
+        /// <param name="propertyParent"></param>
+        /// <param name="key"></param>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public Property CreateProperty(Entity entity, PropertyGroup propertyParent, string key, int value)
+        {
+            // create the property value
+            ValInt valInt = new ValInt();
+            valInt.Value = value;
+
+            return CreateProperty(entity, propertyParent, key, valInt);
+        }
+
+        /// <summary>
+        /// Create a property (key-value) undeer a property group in an entity.
+        /// </summary>
+        /// <param name="entity"></param>
+        /// <param name="propertyParent"></param>
+        /// <param name="key"></param>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public Property CreateProperty(Entity entity, PropertyGroup propertyParent, string key, bool value)
+        {
+            // create the property value
+            ValBool valBool = new ValBool();
+            valBool.Value = value;
+
+            return CreateProperty(entity, propertyParent, key, valBool);
+        }
+
+        //====key is aTextCode
+        /// <summary>
+        /// Add a property to an object: key - value, 
+        /// under the root group properties.
+        /// both are textCode (will be displayed translated depending on the language).
+        /// </summary>
+        /// <param name="entity"></param>
+        /// <param name="tcKey"></param>
+        /// <param name="tcValue"></param>
+        /// <returns></returns>
+        public Property CreateProperty(Entity entity, TextCode tcKey, TextCode tcValue)
+        {
+            // check the entity parent
+            if (entity == null)
+                return null;
+
+            // get the root group properties of the entity
+            PropertyGroup propertyParent = entity.PropertyRoot;
+
+            return CreateProperty(entity, propertyParent, tcKey, tcValue);
         }
 
         /// <summary>
@@ -185,33 +301,6 @@ namespace Etagair.Core
             return CreateProperty(entity, propertyParent, tcKey, valTextCode);
         }
 
-        public Property CreateProperty(Entity entity, PropertyGroup propertyParent, string key, TextCode tcValue)
-        {
-            // create the property value
-            ValTextCodeId valTextCode = new ValTextCodeId();
-            valTextCode.TextCodeId = tcValue.Id;
-
-            return CreateProperty(entity, propertyParent, key, valTextCode);
-        }
-
-
-        /// <summary>
-        /// Create a property (key-value) undeer a property group in an entity.
-        /// </summary>
-        /// <param name="entity"></param>
-        /// <param name="propertyParent"></param>
-        /// <param name="key"></param>
-        /// <param name="value"></param>
-        /// <returns></returns>
-        public Property CreateProperty(Entity entity, PropertyGroup propertyParent, string key, string value)
-        {
-            // create the property value
-            ValString valString = new ValString();
-            valString.Value = value;
-
-            return CreateProperty(entity, propertyParent, key, valString);
-        }
-
         /// <summary>
         /// Create a property to an object: key - value, 
         /// </summary>
@@ -275,6 +364,9 @@ namespace Etagair.Core
 
             return CreateProperty(entity, propertyParent, tcKey, valBool);
         }
+        #endregion
+
+        #region Public Create property group methods.
 
         public PropertyGroup CreatePropertyGroup(Entity entity, string key)
         {

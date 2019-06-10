@@ -70,7 +70,9 @@ namespace Etagair.Core.Tests
 
 
         /// <summary>
+        /// create a property, under the entity root property.
         ///  
+        /// ----Data:
         ///  E: "Name"= "Toshiba"   
         ///     
         /// </summary>
@@ -97,6 +99,92 @@ namespace Etagair.Core.Tests
             Assert.AreEqual("Toshiba", propValueString.Value, "the key should be 'Toshiba'");
         }
 
+        /// <summary>
+        /// create a property, under the entity root property.
+        ///  
+        /// ----Data:
+        ///  E: "Year"= 2019   
+        ///     
+        /// </summary>
+        [TestMethod]
+        public void CreateEntity_Prop_KeyString_ValInt()
+        {
+            EtagairCore core = Common.CreateCore(RepositConfig);
+
+            // create an ent
+            Entity toshibaCoreI7 = core.Editor.CreateEntity();
+
+            // Add a property to an object: key - value
+            Property propName = core.Editor.CreateProperty(toshibaCoreI7, "Year", 2019);
+
+            // check the property key (type and value)
+            PropertyKeyString propKeyString = propName.Key as PropertyKeyString;
+            Assert.IsNotNull(propKeyString, "the key should be a string");
+            Assert.AreEqual("Year", propKeyString.Key, "the key should be 'Year'");
+
+            // check the property value (type and value)
+            ValInt propValueInt = propName.Value as ValInt;
+            Assert.IsNotNull(propValueInt, "the value should be an int");
+            Assert.AreEqual(2019, propValueInt.Value, "the key should be an int");
+        }
+
+        /// <summary>
+        /// create a property, under the entity root property.
+        ///  
+        /// ----Data:
+        ///  E: "Value"= 12.5
+        ///     
+        /// </summary>
+        [TestMethod]
+        public void CreateEntity_Prop_KeyString_ValDouble()
+        {
+            EtagairCore core = Common.CreateCore(RepositConfig);
+
+            // create an ent
+            Entity toshibaCoreI7 = core.Editor.CreateEntity();
+
+            // Add a property to an object: key - value
+            Property propName = core.Editor.CreateProperty(toshibaCoreI7, "Value", 12.5);
+
+            // check the property key (type and value)
+            PropertyKeyString propKeyString = propName.Key as PropertyKeyString;
+            Assert.IsNotNull(propKeyString, "the key should be a string");
+            Assert.AreEqual("Value", propKeyString.Key, "the key should be 'Value'");
+
+            // check the property value (type and value)
+            ValDouble propValueDouble = propName.Value as ValDouble;
+            Assert.IsNotNull(propValueDouble, "the value should be a  double");
+            Assert.AreEqual(12.5, propValueDouble.Value, "the key should be 12.5");
+        }
+
+        /// <summary>
+        /// create a property, under the entity root property.
+        ///  
+        /// ----Data:
+        ///  E: "Done"= true
+        ///     
+        /// </summary>
+        [TestMethod]
+        public void CreateEntity_Prop_KeyString_ValBool()
+        {
+            EtagairCore core = Common.CreateCore(RepositConfig);
+
+            // create an ent
+            Entity toshibaCoreI7 = core.Editor.CreateEntity();
+
+            // Add a property to an object: key - value
+            Property propName = core.Editor.CreateProperty(toshibaCoreI7, "Done", true);
+
+            // check the property key (type and value)
+            PropertyKeyString propKeyString = propName.Key as PropertyKeyString;
+            Assert.IsNotNull(propKeyString, "the key should be a string");
+            Assert.AreEqual("Done", propKeyString.Key, "the key should be 'Value'");
+
+            // check the property value (type and value)
+            ValBool propValueBool = propName.Value as ValBool;
+            Assert.IsNotNull(propValueBool, "the value should be a bool");
+            Assert.AreEqual(true, propValueBool.Value, "the key should be true");
+        }
 
         /// <summary>
         /// create a property, the key and the value are textCode.

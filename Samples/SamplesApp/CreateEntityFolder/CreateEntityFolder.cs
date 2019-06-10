@@ -39,7 +39,7 @@ namespace SamplesApp
             // Add 2 properties to the entity (key - value)
             engine.Editor.CreateProperty(toshibaCoreI7, "Name", "Toshiba Satellite Core I7");
             engine.Editor.CreateProperty(toshibaCoreI7, "Trademark", "Toshiba");
-            //engine.Editor.CreateProperty(toshibaCoreI7, "Year", 2019);
+            engine.Editor.CreateProperty(toshibaCoreI7, "Year", 2019);
         }
 
         /// <summary>
