@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>Etagair</id>
-    <version>0.0.4-alpha</version>
+    <version>0.0.5-alpha</version>
     <title>Etagair</title>
     <authors>lawy</authors>
     <owners>lawy</owners>
@@ -12,7 +12,7 @@
     <license type="file">license\license.txt</license>
     <description>General purpose Configurator API/Library for products, services and more... With many useful functionnalities: Entity/Folder, Search, Templating, Multilingual... Built in C# .NET Standard 2.0.</description>
     <summary>General purpose Configurator API/Library for products, services and more... With many useful functionnalities.</summary>
-    <releaseNotes>Improve the entities search.</releaseNotes>
+    <releaseNotes>Adds nex types to entity property: double, int and bool. (and also to the entity template).</releaseNotes>
     <tags>csharp netcoreapp dotnet library api configurator config configuration</tags>
 
     <!-- Dependencies are automatically installed when the package is installed -->

@@ -5,7 +5,7 @@ need to install the package: Nuget.CommandLine into the solution.
 
 ================================================================================
 Publications:
-last is: 0.0.1.0, 09fev19.
+last is: 0.0.5.0, June, 10 2019.
 
 ================================================================================
 Folders and files descriptions:
@@ -73,3 +73,6 @@ then, publish the generated file on the nuget website.
 Sign in, 
 Upload the packet:
 	Built\Etagair.x.x.x.x\Etagair.x.x.x.x.nupkg
+
+-Test tthe nuget result in the special project in the solution:
+Dev\DevUseFromNugetApp
