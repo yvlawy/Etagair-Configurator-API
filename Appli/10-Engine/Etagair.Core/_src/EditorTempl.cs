@@ -79,7 +79,7 @@ namespace Etagair.Core
         }
         #endregion
 
-        #region Create Property template
+        #region Create Group Property template
 
         /// <summary>
         /// Create a property group template.
@@ -106,7 +106,7 @@ namespace Etagair.Core
 
         /// <summary>
         /// Create a property group template.
-        /// Set the key (string or TextCode), no value, will habe prop childs.
+        /// Set the key (string or TextCode), no value, will have prop childs.
         /// </summary>
         /// <param name="entityTempl"></param>
         /// <param name="propGroupTemplParent"></param>
@@ -134,9 +134,6 @@ namespace Etagair.Core
             PropGroupTempl propGroupTempl = new PropGroupTempl();
             propGroupTempl.PropGroupTemplParentId = propGroupTemplParent.Id;
 
-            //PropKeyTemplTextCode propertyKey = new PropKeyTemplTextCode();
-            //propertyKey.TextCodeId = tcKey.Id;
-
             propGroupTempl.SetKey(propKey);
 
             // add the property under the root properties
@@ -150,7 +147,11 @@ namespace Etagair.Core
 
         }
 
+        #endregion
 
+        #region Create Property template
+
+        //====prop key is a string
 
         /// <summary>
         /// Create a property template.
@@ -161,7 +162,7 @@ namespace Etagair.Core
         /// <returns></returns>
         public PropTempl CreatePropTemplValueStringNull(EntityTempl entityTempl, string key)
         {
-            return CreatePropTempl(entityTempl, key, null);
+            return CreatePropTempl(entityTempl, key, (string)null);
         }
 
         /// <summary>
@@ -182,9 +183,83 @@ namespace Etagair.Core
 
             return CreatePropTempl(entityTempl, propertyParent, key, value);
         }
+        /// <summary>
+        /// Create a property template.
+        /// </summary>
+        /// <param name="entityTempl"></param>
+        /// <param name="tcKey"></param>
+        /// <param name="tcValue"></param>
+        /// <returns></returns>
+        public PropTempl CreatePropTempl(EntityTempl entityTempl, string key, double value)
+        {
+            // check the entity parent
+            if (entityTempl == null)
+                return null;
+
+            // get the root group properties of the entity
+            PropGroupTempl propertyParent = entityTempl.PropertyRoot;
+
+            return CreatePropTempl(entityTempl, propertyParent, key, value);
+        }
+        /// <summary>
+        /// Create a property template.
+        /// </summary>
+        /// <param name="entityTempl"></param>
+        /// <param name="tcKey"></param>
+        /// <param name="tcValue"></param>
+        /// <returns></returns>
+        public PropTempl CreatePropTempl(EntityTempl entityTempl, string key, int value)
+        {
+            // check the entity parent
+            if (entityTempl == null)
+                return null;
+
+            // get the root group properties of the entity
+            PropGroupTempl propertyParent = entityTempl.PropertyRoot;
+
+            return CreatePropTempl(entityTempl, propertyParent, key, value);
+        }
+        /// <summary>
+        /// Create a property template.
+        /// </summary>
+        /// <param name="entityTempl"></param>
+        /// <param name="tcKey"></param>
+        /// <param name="tcValue"></param>
+        /// <returns></returns>
+        public PropTempl CreatePropTempl(EntityTempl entityTempl, string key, bool value)
+        {
+            // check the entity parent
+            if (entityTempl == null)
+                return null;
+
+            // get the root group properties of the entity
+            PropGroupTempl propertyParent = entityTempl.PropertyRoot;
+
+            return CreatePropTempl(entityTempl, propertyParent, key, value);
+        }
+
 
         /// <summary>
         /// Create a property template.
+        /// </summary>
+        /// <param name="entityTempl"></param>
+        /// <param name="tcKey"></param>
+        /// <param name="tcValue"></param>
+        /// <returns></returns>
+        public PropTempl CreatePropTempl(EntityTempl entityTempl, string key, TextCode value)
+        {
+            // check the entity parent
+            if (entityTempl == null)
+                return null;
+
+            // get the root group properties of the entity
+            PropGroupTempl propertyParent = entityTempl.PropertyRoot;
+
+            return CreatePropTempl(entityTempl, propertyParent, key, value);
+        }
+        /// <summary>
+        /// Create a property template, under a property group parent.
+        /// prop key is string, prop value is a string.
         /// </summary>
         /// <param name="entityTempl"></param>
         /// <param name="tcKey"></param>
@@ -203,6 +278,128 @@ namespace Etagair.Core
             PropValueTempl propValue = PropValueTemplTool.CreatePropValueTemplFromValue(value);
 
             return CreatePropTempl(entityTempl, propertyParent, propKeyString, propValue);
+        }
+
+        /// <summary>
+        /// Create a property template, under a property group parent.
+        /// prop key is string, prop value is a double.
+        /// </summary>
+        /// <param name="entityTempl"></param>
+        /// <param name="tcKey"></param>
+        /// <param name="tcValue"></param>
+        /// <returns></returns>
+        public PropTempl CreatePropTempl(EntityTempl entityTempl, PropGroupTempl propertyParent, string key, double value)
+        {
+            // check the entity parent
+            if (entityTempl == null)
+                return null;
+
+            PropKeyTemplString propKeyString = new PropKeyTemplString();
+            propKeyString.Key = key;
+
+            // create the property value template, can be null
+            PropValueTempl propValue = PropValueTemplTool.CreatePropValueTemplFromValue(value);
+
+            return CreatePropTempl(entityTempl, propertyParent, propKeyString, propValue);
+        }
+
+        /// <summary>
+        /// Create a property template, under a property group parent.
+        /// prop key is string, prop value is an int.
+        /// </summary>
+        /// <param name="entityTempl"></param>
+        /// <param name="tcKey"></param>
+        /// <param name="tcValue"></param>
+        /// <returns></returns>
+        public PropTempl CreatePropTempl(EntityTempl entityTempl, PropGroupTempl propertyParent, string key, int value)
+        {
+            // check the entity parent
+            if (entityTempl == null)
+                return null;
+
+            PropKeyTemplString propKeyString = new PropKeyTemplString();
+            propKeyString.Key = key;
+
+            // create the property value template, can be null
+            PropValueTempl propValue = PropValueTemplTool.CreatePropValueTemplFromValue(value);
+
+            return CreatePropTempl(entityTempl, propertyParent, propKeyString, propValue);
+        }
+
+        /// <summary>
+        /// Create a property template, under a property group parent.
+        /// prop key is string, prop value is a bool.
+        /// </summary>
+        /// <param name="entityTempl"></param>
+        /// <param name="tcKey"></param>
+        /// <param name="tcValue"></param>
+        /// <returns></returns>
+        public PropTempl CreatePropTempl(EntityTempl entityTempl, PropGroupTempl propertyParent, string key, bool value)
+        {
+            // check the entity parent
+            if (entityTempl == null)
+                return null;
+
+            PropKeyTemplString propKeyString = new PropKeyTemplString();
+            propKeyString.Key = key;
+
+            // create the property value template, can be null
+            PropValueTempl propValue = PropValueTemplTool.CreatePropValueTemplFromValue(value);
+
+            return CreatePropTempl(entityTempl, propertyParent, propKeyString, propValue);
+        }
+
+        /// <summary>
+        /// Create a property template, under a property group parent.
+        /// prop key is string, prop value is a TextCode.
+        /// </summary>
+        /// <param name="entityTempl"></param>
+        /// <param name="tcKey"></param>
+        /// <param name="tcValue"></param>
+        /// <returns></returns>
+        public PropTempl CreatePropTempl(EntityTempl entityTempl, PropGroupTempl propertyParent, string key, TextCode tcValue)
+        {
+            // check the entity parent
+            if (entityTempl == null)
+                return null;
+
+            PropKeyTemplString propKeyString = new PropKeyTemplString();
+            propKeyString.Key = key;
+
+            // transform the value
+            ValTextCodeId valTextCodeId = null;
+            if (tcValue != null)
+            {
+                valTextCodeId = new ValTextCodeId();
+                // can be null (to set on instantiation)
+                valTextCodeId.TextCodeId = tcValue.Id;
+            }
+
+            PropValueTempl propValue = PropValueTemplTool.CreatePropValueTemplFromValue(valTextCodeId);
+
+            return CreatePropTempl(entityTempl, propertyParent, propKeyString, propValue);
+        }
+
+        //====prop key is textCode
+
+        /// <summary>
+        /// Create a property template.
+        /// prop key is a TextCode, prop value is a string.
+        /// </summary>
+        /// <param name="entityTempl"></param>
+        /// <param name="tcKey"></param>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public PropTempl CreatePropTempl(EntityTempl entityTempl, TextCode tcKey, string value)
+        {
+            // check the entity parent
+            if (entityTempl == null)
+                return null;
+
+            // get the root group properties of the entity
+            PropGroupTempl propertyParent = entityTempl.PropertyRoot;
+
+            return CreatePropTempl(entityTempl, propertyParent, tcKey, value);
         }
 
         /// <summary>
@@ -237,20 +434,7 @@ namespace Etagair.Core
             return CreatePropTempl(entityTempl, propertyParent, tcKey, tcValue);
         }
 
-
-        public PropTempl CreatePropTempl(EntityTempl entityTempl, TextCode tcKey, string value)
-        {
-            // check the entity parent
-            if (entityTempl == null)
-                return null;
-
-            // get the root group properties of the entity
-            PropGroupTempl propertyParent = entityTempl.PropertyRoot;
-
-            return CreatePropTempl(entityTempl, propertyParent, tcKey, value);
-        }
-
-        public PropTempl CreatePropTempl(EntityTempl entityTempl, PropGroupTempl propertyParent, TextCode tcKey, TextCode tcValue)
+        public PropTempl CreatePropTempl(EntityTempl entityTempl, PropGroupTempl propertyParent, TextCode tcKey, string value)
         {
             // check the entity parent
             if (entityTempl == null)
@@ -259,12 +443,22 @@ namespace Etagair.Core
             PropKeyTemplTextCode propKeyTextCode = new PropKeyTemplTextCode();
             propKeyTextCode.TextCodeId = tcKey.Id;
 
-            //PropValueTemplTextCode propValueTextCode = null;
-            //propValueTextCode = new PropValueTemplTextCode();
-            //if (tcValue != null)
-                // can be null (to set on instantiation)
-                //propValueTextCode.TextCodeId = tcValue.Id;
+            // create the property value template
+            PropValueTempl propValue = PropValueTemplTool.CreatePropValueTemplFromValue(value);
+            return CreatePropTempl(entityTempl, propertyParent, propKeyTextCode, propValue);
+        }
 
+        public PropTempl CreatePropTempl(EntityTempl entityTempl, PropGroupTempl propertyParent, TextCode tcKey, TextCode tcValue)
+        {
+            // check the entity parent
+            if (entityTempl == null)
+                return null;
+
+            // transform the key
+            PropKeyTemplTextCode propKeyTextCode = new PropKeyTemplTextCode();
+            propKeyTextCode.TextCodeId = tcKey.Id;
+
+            // transform the value
             ValTextCodeId valTextCodeId = null;
             if (tcValue != null)
             {
@@ -278,19 +472,8 @@ namespace Etagair.Core
             return CreatePropTempl(entityTempl, propertyParent, propKeyTextCode, propValue);
         }
 
-        public PropTempl CreatePropTempl(EntityTempl entityTempl, PropGroupTempl propertyParent, TextCode tcKey, string value)
-        {
-            // check the entity parent
-            if (entityTempl == null)
-                return null;
 
-            PropKeyTemplTextCode propKeyTextCode= new PropKeyTemplTextCode();
-            propKeyTextCode.TextCodeId = tcKey.Id;
-
-            // create the property value template
-            PropValueTempl propValue = PropValueTemplTool.CreatePropValueTemplFromValue(value);
-            return CreatePropTempl(entityTempl, propertyParent, propKeyTextCode, propValue);
-        }
+        //====very generic (low-level) method
 
         public PropTempl CreatePropTempl(EntityTempl entityTempl, PropGroupTempl propGroupTemplParent, PropKeyTemplBase propKey, PropValueTempl propValue)
         {
@@ -313,16 +496,6 @@ namespace Etagair.Core
             // create the property, set the key and the value
             PropTempl propertyTempl = new PropTempl();
             propertyTempl.PropGroupTemplParentId = propGroupTemplParent.Id;
-
-            //PropKeyTemplTextCode propertyKey = new PropKeyTemplTextCode();
-            //propertyKey.TextCodeId = tcKey.Id;
-
-            //PropValueTemplString propertyValue = null;
-            //if (value != null)
-            //{
-            //    propertyValue = new PropValueTemplString();
-            //    propertyValue.Value = value;
-            //}
 
             propertyTempl.SetKeyValue(propKey, propValue);
 

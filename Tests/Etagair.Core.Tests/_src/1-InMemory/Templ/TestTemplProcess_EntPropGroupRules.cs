@@ -38,7 +38,7 @@ namespace Etagair.Core.Tests.TestTempl
             PropGroupTempl propGroupTemplCore = core.EditorTempl.CreatePropGroupTempl(entTemplComputer, "Core");
 
             // create a property template without the value: will be created on the instantiation
-            PropTempl propTemplType = core.EditorTempl.CreatePropTempl(entTemplComputer, propGroupTemplCore, "Type", null);
+            PropTempl propTemplType = core.EditorTempl.CreatePropTempl(entTemplComputer, propGroupTemplCore, "Type", (string)null);
 
             // On prop type, Add Rule: add property, V=RULE:ToSet, type= string
             PropTemplRuleValueToSet rule = new PropTemplRuleValueToSet();

@@ -35,6 +35,22 @@ namespace Etagair.Core.System
                 return valDoubleRes;
             }
 
+            ValInt valInt = value as ValInt;
+            if (valInt != null)
+            {
+                ValInt valIntRes = new ValInt();
+                valIntRes.Value = valInt.Value;
+                return valIntRes;
+            }
+
+            ValBool valBool = value as ValBool;
+            if (valBool != null)
+            {
+                ValBool valBoolRes = new ValBool();
+                valBoolRes.Value = valBool.Value;
+                return valBoolRes;
+            }
+
             ValTextCodeId valTextCodeId = value as ValTextCodeId;
             if (valTextCodeId != null)
             {
