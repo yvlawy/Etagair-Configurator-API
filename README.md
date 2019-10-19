@@ -53,7 +53,7 @@ These lines of code create the engine object. The init method create the databas
 ```
 
 ### Create a folder within an entity 
-Create a folder named "computers", add under it an entity having two properties.
+For example, create a folder named "computers", add it under an entity having two properties.
 An entity haven't a name. Property of an entity is key-value pair. 
 
 The data:
