@@ -97,6 +97,39 @@ namespace DevApp
 
         }
 
+        /// <summary>
+        /// example on how translation is working.
+        /// Main and specific language.
+        /// 
+        /// E:
+        ///     tc:Name= tc:NameToshiba
+        /// </summary>
+        /// <param name="core"></param>
+        static void LangMainAndSpecificWork(EtagairCore core)
+        {
+            //----set defined (activate) language codes in the current catalog
+            core.Editor.DefineLanguage(LanguageCode.en);
+            core.Editor.DefineLanguage(LanguageCode.en_GB);
+            core.Editor.DefineLanguage(LanguageCode.en_US);
+
+
+            // create localized text for main languages managed in the application
+            TextCode tcName = core.Editor.CreateTextCode("Name");
+            core.Editor.CreateTextLocalModel(LanguageCode.en, tcName, "Name");
+
+            TextCode tcNameToshiba = core.Editor.CreateTextCode("NameToshiba");
+            core.Editor.CreateTextLocalModel(LanguageCode.en, tcNameToshiba, "Laptop Toshiba Core i7 RAM 8Go HD 1To Win10");
+
+            // set the current language, get the localized/translated text
+            core.Searcher.SetCurrentLanguage(LanguageCode.en_GB);
+
+
+            // create/generate the localized/translated text of a textCode
+            // the en_GB language doesn't exists so return the main lang (en for en_GB) textLocal: 'Name'
+            TextLocal tlName = core.Editor.GenerateTextLocal(tcName);
+
+            TextLocal tlNameAgain = core.Editor.GenerateTextLocal(tcName, LanguageCode.en);
+        }
 
         /// <summary>
         /// entity with property:
@@ -237,7 +270,9 @@ namespace DevApp
             EtagairCore core = CreateCore(reposit);
 
             // Dev the language and text data model.
-            CreateLangAndTexts(core);
+            //CreateLangAndTexts(core);
+
+            LangMainAndSpecificWork(core);
 
             //BuildContent(core);
 
