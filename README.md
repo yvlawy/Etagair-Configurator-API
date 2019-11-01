@@ -38,7 +38,7 @@ These lines of code create the engine object. The init method create the databas
 ```csharp
   EtagairEngine engine = new EtagairEngine();
 
-  // the path must exists, location where to put the database file
+  // the path must exists, it's the location where to put the database file
   string dbPath = @".\Data\";
 
   // create the database or reuse the existing one
@@ -48,7 +48,7 @@ These lines of code create the engine object. The init method create the databas
     return;
   }
 
-  // the database is created or reused and opened, ready to the execution
+  // the database is created or reused and opened, it is ready to the execution
   Console.WriteLine("Db initialized with success.");
 ```
 
