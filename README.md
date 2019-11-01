@@ -53,7 +53,7 @@ These lines of code create the engine object. The init method create the databas
 ```
 
 ### Create a folder within an entity 
-For example, create a folder named "computers", add it under an entity having two properties.
+For example, create a folder named "computers", under it, add an entity having two properties.
 An entity haven't a name. Property of an entity is key-value pair. 
 
 The data:
@@ -71,13 +71,13 @@ Folder foldComputers = engine.Editor.CreateFolder(null, "computers");
 // create an entity, under the computers folder
 Entity toshibaCoreI7 = engine.Editor.CreateEntity(foldComputers);
 
-// Add 2 properties to the entity (key - value)
+// add 2 properties to the entity (key - value)
 engine.Editor.CreateProperty(toshibaCoreI7, "Name", "Toshiba Satellite Core I7");
 engine.Editor.CreateProperty(toshibaCoreI7, "Trademark", "Toshiba");
 ```
 
 ### Package on Nuget
-The application is ready to use and available on Nuget.
+The application is ready to use and is available on Nuget.
 The last version is 0.0.5-alpha.
 
 The web site: https://www.nuget.org/packages/Etagair/
